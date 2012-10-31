@@ -1,0 +1,16 @@
+/**
+ * Created with IntelliJ IDEA.
+ * User: Lenovo
+ * Date: 31.10.2012
+ * Time: 19:46
+ * To change this template use File | Settings | File Templates.
+ */
+public class HelloWorld {
+
+    public static void main(String[] args) {
+        Steini steini = new Steini();
+        StdOut.println("Hæ kæri hópur og velkomin á nýtt github verkefni :-)");
+        System.out.println(steini.hallo);
+
+    }
+}
