@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="Sidannar:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Sidannar_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Sidannar/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>
