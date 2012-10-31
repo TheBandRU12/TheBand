@@ -9,8 +9,10 @@ public class HelloWorld {
 
     public static void main(String[] args) {
         Steini steini = new Steini();
-        StdOut.println("Hæ kæri hópur og velkomin á nýtt github verkefni :-)");
+        Gudni gudni = new Gudni();
+        System.out.println("Hæ kæri hópur og velkomin á nýtt github verkefni :-)");
         System.out.println(steini.hallo);
+        System.out.println(gudni.gaman);
 
     }
 }
