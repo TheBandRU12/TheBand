@@ -1,0 +1,57 @@
+<project name="Hallo" default="jar" basedir=".">
+
+    <!-- ======================================================== -->
+    <!-- Global properties                                        -->
+    <!-- ======================================================== -->
+    <property name="src" value="src"/>
+    <property name="output.dir" value="classes"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="jar.file" value="Hallo.jar"/>
+    <property name="classpath"
+              value="${lib.dir}/rome-0.8.jar:${lib.dir}/jdom.jar:${lib.dir}/spring.jar:${lib.dir}/commons-logging.jar:${lib.dir}/ruframework.jar:${lib.dir}/jtds-1.2.jar"/>
+
+    <!-- ======================================================== -->
+    <target name="init"
+            description="Prepare by creating output directories">
+        <mkdir dir="${output.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+
+    <!-- ======================================================== -->
+    <target name="compile" depends="init"
+            description="Compilation of all source files">
+        <javac srcdir="${src}"
+               destdir="${output.dir}"
+               classpath="${classpath}"/>
+    </target>
+
+    <!-- ======================================================== -->
+    <target name="jar" depends="compile"
+            description="Create the JAR">
+        <jar jarfile="${dist.dir}/${jar.file}"
+             basedir="${output.dir}">
+            <fileset dir="${src}"/>
+        </jar>
+    </target>
+
+    <!-- ======================================================== -->
+    <target name="run" depends="jar"
+            description="Runs Hallos">
+        <java classname="Hallo">
+            <classpath>
+                <pathelement path="${classpath}"/>
+                <pathelement path="${java.class.path}"/>
+                <pathelement location="${dist.dir}\Hallo.jar"/>
+            </classpath>
+        </java>
+    </target>
+
+
+    <!-- ======================================================== -->
+    <target name="clean" description="Delete all generated files">
+        <delete dir="${output.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+</project>
