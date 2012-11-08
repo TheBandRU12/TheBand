@@ -6,5 +6,5 @@
  * To change this template use File | Settings | File Templates.
  */
 public class Doddi {
-    static String name = "Bestu Kveðjur frá Dodda 8.11.2012" ;
+    static String name = "Bestu Kveðjur frá Dodda Braga 8.11.2012" ;
 }
