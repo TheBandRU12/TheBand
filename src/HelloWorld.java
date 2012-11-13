@@ -13,8 +13,8 @@ public class HelloWorld {
         Doddi doddi = new Doddi();
         System.out.println("Hæ kæri hópur og velkomin á nýtt github verkefni :-)");
         System.out.println(steini.hallo);
-        System.out.println(gudni.gaman);
-        System.out.println(doddi.name);
+        System.out.println(gudni.gaman + gudni.Meiragaman);
+        System.out.println(doddi.name + doddi.funFactor);
 
     }
 }
