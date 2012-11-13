@@ -6,5 +6,6 @@
  * To change this template use File | Settings | File Templates.
  */
 public class Doddi {
-    String name = "Doddi";
+    static String name = "Bestu Kveðjur frá Dodda Braga 13.11.2012" ;
+    static String funFactor = "Fun Factor";
 }
