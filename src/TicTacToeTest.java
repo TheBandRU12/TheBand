@@ -1,5 +1,3 @@
-package com.TicTacToe;
-
 import org.junit.Test;
 
 /**

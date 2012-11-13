@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73d13e34-6166-4595-af13-814a73d99e5d" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Temp\HR\Tolvunarfraedi\20123\HUGB\Verkefni\Sidannar\src\TicTacToe.java" afterPath="$PROJECT_DIR$/src/com/TicTacToe/TicTacToe.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MOVED" beforePath="C:\Temp\HR\Tolvunarfraedi\20123\HUGB\Verkefni\Sidannar\src\com\TicTacToe\TicTacToe.java" afterPath="$PROJECT_DIR$/src/TicTacToe.java" />
+      <change type="MOVED" beforePath="C:\Temp\HR\Tolvunarfraedi\20123\HUGB\Verkefni\Sidannar\src\com\TicTacToe\TicTacToeTest.java" afterPath="$PROJECT_DIR$/src/TicTacToeTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sidannar.iml" afterPath="$PROJECT_DIR$/Sidannar.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/TicTacToe/TicTacToeTest.java" afterPath="$PROJECT_DIR$/src/com/TicTacToe/TicTacToeTest.java" />
     </list>
     <ignored path="TheBand.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,18 +63,18 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="TicTacToeTest.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/TicTacToe/TicTacToeTest.java">
+        <entry file="file://$PROJECT_DIR$/src/TicTacToeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="56" selection-start="299" selection-end="299" vertical-scroll-proportion="0.5572917">
+            <state line="14" column="56" selection-start="275" selection-end="275" vertical-scroll-proportion="0.5572917">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="TicTacToe.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/TicTacToe/TicTacToe.java">
+        <entry file="file://$PROJECT_DIR$/src/TicTacToe.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="24" selection-end="24" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -101,9 +99,9 @@
         <option value="$PROJECT_DIR$/src/Steini.java" />
         <option value="$PROJECT_DIR$/src/HelloWorld.java" />
         <option value="$PROJECT_DIR$/src/TicTacToe.java" />
-        <option value="$PROJECT_DIR$/src/TicTacToeTest.java" />
         <option value="$PROJECT_DIR$/src/com/TicTacToe/TicTacToe.java" />
         <option value="$PROJECT_DIR$/src/com/TicTacToe/TicTacToeTest.java" />
+        <option value="$PROJECT_DIR$/src/TicTacToeTest.java" />
       </list>
     </option>
   </component>
@@ -170,24 +168,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheBand" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Sidannar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TicTacToe" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -349,8 +329,8 @@
       <module name="Sidannar" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.TicTacToe" />
-      <option name="MAIN_CLASS_NAME" value="com.TicTacToe.TicTacToeTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TicTacToeTest" />
       <option name="METHOD_NAME" value="play_marks_correct_spot" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -579,12 +559,16 @@
       <created>1352850465593</created>
       <updated>1352850465593</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Setti inn fyrsta unit testið mitt">
+      <created>1352850693906</created>
+      <updated>1352850693906</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="3" y="1" width="1167" height="768" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -604,7 +588,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13961922" sideWeight="0.67269737" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13961922" sideWeight="0.67269737" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32730263" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -649,7 +633,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fyrsta version af TicTacToe.java :-)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setti inn fyrsta unit testið mitt" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -665,6 +649,7 @@
     <MESSAGE value="Fyrsta commit á nýju projecti" />
     <MESSAGE value="Fyrsta commit á nýju projecti 2" />
     <MESSAGE value="Fyrsta version af TicTacToe.java :-)" />
+    <MESSAGE value="Setti inn fyrsta unit testið mitt" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -737,16 +722,16 @@
         <state line="16" column="37" selection-start="539" selection-end="539" vertical-scroll-proportion="0.45409015" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/TicTacToe/TicTacToe.java">
+    <entry file="file://$PROJECT_DIR$/src/TicTacToe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="24" selection-end="24" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/TicTacToe/TicTacToeTest.java">
+    <entry file="file://$PROJECT_DIR$/src/TicTacToeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="56" selection-start="299" selection-end="299" vertical-scroll-proportion="0.5572917">
+        <state line="14" column="56" selection-start="275" selection-end="275" vertical-scroll-proportion="0.5572917">
           <folding />
         </state>
       </provider>

@@ -1,13 +1,11 @@
-package com.TicTacToe;
-
 /**
- * HUGB TheBand haust 2012
- * Date: 11.11.2012
- * dependencies: java.util.scanner
- *
- * Til að þjappa: javac TicTacToe.java
- * Til að keyra: java TicTacToe X ( eða O )
- */
+* HUGB TheBand haust 2012
+* Date: 11.11.2012
+* dependencies: java.util.scanner
+*
+* Til að þjappa: javac TicTacToe.java
+* Til að keyra: java TicTacToe X ( eða O )
+*/
 
 import java.util.Scanner;
 
