@@ -24,10 +24,12 @@ public class Board {
         return false;
     }
     public boolean PlaceMark(int x, char mark) {
-        if (!Empty(x))
-            return false;
-        board[x] = mark;
-        return true;
+        if (Empty(x)) {
+            board[x-1] = mark;
+            return true;
+        }
+        return false;
+
     }
     public char GetMark(int x) {
         return board[x-1];
