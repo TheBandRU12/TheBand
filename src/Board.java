@@ -14,8 +14,11 @@ public class Board {
             board[i] = (char)('1' + i);
         }
     }
+    protected int Two2One(int x, int y) {
+       return  (x-1) + 3*(y-1) +1;
+    }
     public boolean  Empty(int x, int y) {
-        return Empty((x-1) + 3*(y-1) +1);
+        return Empty(Two2One(x,y));
     }
     public boolean  Empty(int x) {
         return (board[x-1] > '0' && board[x-1] <= '9');
