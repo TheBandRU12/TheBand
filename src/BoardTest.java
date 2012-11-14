@@ -13,6 +13,8 @@ public class BoardTest extends TestCase {
         Board board = new Board();
 
         assertTrue(board.Empty(1));
+        board.board[0] = 'X';
+        assertFalse(board.Empty(1));
     }
 
     public void testPlaceMark() throws Exception {
@@ -21,7 +23,9 @@ public class BoardTest extends TestCase {
         assertFalse(board.PlaceMark(1,'X'));
     }
 
-    public void testMark() throws Exception {
-            assertTrue(true);
+    public void testGetMark() throws Exception {
+        Board board = new Board();
+        board.board[0] = 'X';
+        assertEquals('X', board.GetMark(1));
     }
 }

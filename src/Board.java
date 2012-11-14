@@ -18,7 +18,7 @@ public class Board {
         return true;
     }
     public boolean  Empty(int x) {
-        return false;
+        return (board[x-1] > '0' && board[x-1] <= '9');
     }
     public boolean PlaceMark(int x, int y, char mark) {
         return false;
@@ -26,10 +26,10 @@ public class Board {
     public boolean PlaceMark(int x, char mark) {
         return false;
     }
-    public char Mark(int x) {
-        return ' ';
+    public char GetMark(int x) {
+        return board[x-1];
     }
-    public char Mark(int x, int y) {
+    public char GetMark(int x, int y) {
         return ' ';
     }
 }
