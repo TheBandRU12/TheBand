@@ -15,7 +15,7 @@ public class Board {
         }
     }
     public boolean  Empty(int x, int y) {
-        return true;
+        return Empty((x-1) + 3*(y-1) +1);
     }
     public boolean  Empty(int x) {
         return (board[x-1] > '0' && board[x-1] <= '9');
