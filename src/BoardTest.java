@@ -19,9 +19,9 @@ public class BoardTest extends TestCase {
 
     public void testPlaceMark() throws Exception {
         Board board = new Board();
-        //assertTrue(board.PlaceMark(1,'X'));
-        assertFalse(board.PlaceMark(1,'X'));
-        assertEquals('X', board.GetMark(1));
+        assertTrue(board.PlaceMark(1,'X'));
+        //assertFalse(board.PlaceMark(1,'X'));
+        //assertEquals('X', board.GetMark(1));
     }
 
     public void testGetMark() throws Exception {
