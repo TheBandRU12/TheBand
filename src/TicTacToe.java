@@ -103,11 +103,15 @@ public class TicTacToe {
         return winner;
     }
 
-    TicTacToe reset(){
-        return new TicTacToe(this.player);
+    void reset(){
+        this.mark = new char[3][3];
+        for(int i = 0, k = 49; i < 3; i++)
+            for( int j = 0; j < 3; j++, k++)
+                this.mark[i][j] = (char)k;
+        this.count = 0;
     }
 
-    private void printBoard(){
+    void printBoard(){
         //System.out.println("printboard");
         String board = "";
 
@@ -123,8 +127,8 @@ public class TicTacToe {
         System.out.println(board);//sb.toString();
     }
 
-    //Til ad nota medan forrit er enn i DOS
-    private void GetabAndPlay(int answer, char playa)  {
+    //Velja reit út frá völdu númeri
+    public void GetabAndPlay(int answer, char playa)  {
         if(answer == 1)
             this.play(0,0,playa);
         if(answer == 2)
@@ -166,7 +170,7 @@ public class TicTacToe {
         while(TTT.win() < 1) {
             System.out.println("Sladu inn numer reitar sem thu vilt merkja med " + TTT.player);
             int answer = in.nextInt();
-            if(answer == 0) TTT = TTT.reset();
+            if(answer == 0) TTT.reset();
             if(answer != 0)  {
                 TTT.GetabAndPlay(answer, TTT.player);
 
@@ -187,7 +191,7 @@ public class TicTacToe {
                 // byrja nyan leik eda haetta
                 System.out.println("Sladu inn 1 til ad halda afram\n 2 til ad haetta");
                 answer = in.nextInt();
-                if(answer == 1) {TTT = TTT.reset(); TTT.printBoard();}
+                if(answer == 1) {TTT.reset(); TTT.printBoard();}
                 if(answer != 1) answer = 2;
             }
             //System.out.println("win = " + TTT.win() + " count = " + TTT.count);
