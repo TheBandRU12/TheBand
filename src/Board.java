@@ -15,7 +15,7 @@ public class Board {
         }
     }
     public boolean  Empty(int x, int y) {
-        return false;
+        return true;
     }
     public boolean  Empty(int x) {
         return false;

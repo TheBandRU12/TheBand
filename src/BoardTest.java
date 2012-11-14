@@ -1,3 +1,4 @@
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 /**
@@ -9,13 +10,18 @@ import junit.framework.TestCase;
  */
 public class BoardTest extends TestCase {
     public void testEmpty() throws Exception {
+        Board board = new Board();
+
+        assertTrue(board.Empty(1));
     }
 
     public void testPlaceMark() throws Exception {
-
+        Board board = new Board();
+        assertTrue(board.PlaceMark(1,'X'));
+        assertFalse(board.PlaceMark(1,'X'));
     }
 
     public void testMark() throws Exception {
-
+            assertTrue(true);
     }
 }
