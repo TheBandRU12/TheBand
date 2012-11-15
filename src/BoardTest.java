@@ -25,8 +25,8 @@ public class BoardTest extends TestCase {
         Board board = new Board();
 
         assertTrue(board.Empty(1,1));
-        board.board[1] = 'X';
-        assertFalse(board.Empty(2,1));
+        board.board[2] = 'X';
+        assertFalse(board.Empty(0,2));
     }
 
     public void testPlaceMark() throws Exception {
@@ -39,9 +39,9 @@ public class BoardTest extends TestCase {
 
     public void testPlaceMarkTwo() throws Exception {
         Board board = new Board();
-        assertTrue(board.PlaceMark(1,1,'X'));
+        assertTrue(board.PlaceMark(0,0,'X'));
         assertEquals('X', board.board[0]);
-        assertFalse(board.PlaceMark(1,1,'X'));
+        assertFalse(board.PlaceMark(0,0,'X'));
         assertEquals('X', board.GetMark(1));
     }
 
@@ -53,13 +53,13 @@ public class BoardTest extends TestCase {
 
     public void testGetMarkTwo() throws Exception {
         Board board = new Board();
-        assertEquals('1', board.GetMark(1,1));
+        assertEquals('1', board.GetMark(0,0));
         board.board[0] = 'X';
-        assertEquals("Top left should be X",'X', board.GetMark(1,1));
-        assertEquals('5', board.GetMark(2,2));
+        assertEquals("Top left should be X",'X', board.GetMark(0,0));
+        assertEquals('5', board.GetMark(1,1));
         board.board[4] = 'X';
-        assertEquals('X', board.GetMark(2,2));
+        assertEquals('X', board.GetMark(1,1));
         board.board[8] = 'X';
-        assertEquals('X', board.GetMark(3,3));
+        assertEquals('X', board.GetMark(2,2));
     }
 }

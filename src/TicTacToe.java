@@ -81,11 +81,11 @@ public class TicTacToe {
 
             //athuga sigur a ská frá hægra efra horni
             if(board.GetMark(0,0) == board.GetMark(1,1)  && board.GetMark(1,1) == board.GetMark(2,2))
-                    victor = this.mark[1][1];
+                    victor = board.GetMark(1, 1);
 
             //athuga sigur a ská frá vinstra efra horni
             if(board.GetMark(0,2) == board.GetMark(1,1)  && board.GetMark(1,1) == board.GetMark(2,0))
-                    victor = this.mark[1][1];
+                    victor = board.GetMark(1, 1);
 
 
             if(victor == this.player)      // human vinnur
@@ -155,9 +155,10 @@ public class TicTacToe {
 
         //System.out.println("args = " + args[0].charAt(0));
 
-        if(args[0].charAt(0) == 'X' || args[0].charAt(0) == 'O')
-            playa = args[0].charAt(0);
-        else playa = 'X';
+        //if(args[0].charAt(0) == 'X' || args[0].charAt(0) == 'O')
+        //    playa = args[0].charAt(0);
+        //else
+        playa = 'X';
 
         //System.out.println("player = " + playa);
         TicTacToe TTT = new TicTacToe(playa);

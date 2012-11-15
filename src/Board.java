@@ -15,7 +15,7 @@ public class Board {
         }
     }
     protected int Two2One(int x, int y) {
-       return  (x-1) + 3*(y-1) +1;
+       return  3*(x) + (y) +1;
     }
     public boolean  Empty(int x, int y) {
         return Empty(Two2One(x,y));
