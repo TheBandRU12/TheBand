@@ -24,7 +24,7 @@ public class Board {
         return (board[x-1] > '0' && board[x-1] <= '9');
     }
     public boolean PlaceMark(int x, int y, char mark) {
-        return false;
+        return PlaceMark(Two2One(x,y),mark);
     }
     public boolean PlaceMark(int x, char mark) {
         if (Empty(x)) {
@@ -38,6 +38,6 @@ public class Board {
         return board[x-1];
     }
     public char GetMark(int x, int y) {
-        return ' ';
+        return board[Two2One(x,y)-1];
     }
 }
