@@ -7,12 +7,12 @@ import org.junit.Test;
 
 public class TicTacToeTest {
 
-    TicTacToe TestTTT = new TicTacToe('X');
+    //TicTacToe TestTTT = new TicTacToe('X');
     /**
      * profar hvort play() merkir rettan stad i mark[][]
      */
-    @Test
-    public void play_not_overwrites() {
+    //@Test
+   /* public void play_not_overwrites() {
         TestTTT.reset();
         TestTTT.play(2,2,TestTTT.player);
         TestTTT.play(2,2,'O');
@@ -40,5 +40,5 @@ public class TicTacToeTest {
         assert (compare != TestTTT.mark);
 
     }
-
+*/
 }
