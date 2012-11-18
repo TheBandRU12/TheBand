@@ -41,4 +41,35 @@ public class TicTacToeTest {
 
     }
 
+    @Test
+    public void test_win_diagonal_from_top_left(){
+        TestTTT.reset();
+        TestTTT.count = 5;
+        TestTTT.mark[0][0] = TestTTT.player;
+        TestTTT.mark[1][1] = TestTTT.player;
+        TestTTT.mark[2][2] = TestTTT.player;
+        assert (TestTTT.win() == 2);
+
+    }
+    @Test
+    public void test_win_diagonal_from_top_right(){
+        TestTTT.reset();
+        TestTTT.count = 5;
+        TestTTT.mark[0][2] = TestTTT.player;
+        TestTTT.mark[1][1] = TestTTT.player;
+        TestTTT.mark[2][0] = TestTTT.player;
+
+        assert (TestTTT.win() == 2);
+    }
+    @Test
+    public void test_win_horizontal(){
+        TestTTT.reset();
+        TestTTT.count = 5;
+        TestTTT.mark[1][0] = TestTTT.player;
+        TestTTT.mark[1][1] = TestTTT.player;
+        TestTTT.mark[1][2] = TestTTT.player;
+
+        assert (TestTTT.win() == 2);
+    }
+
 }
