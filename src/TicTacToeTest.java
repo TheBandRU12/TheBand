@@ -72,4 +72,29 @@ public class TicTacToeTest {
         assert (TestTTT.win() == 2);
     }
 
+
+    @Test
+    public void test_GetABandplay_array_selections1(){
+        TestTTT.reset();
+        char[][] testArray = new char[3][3];
+        testArray[0][0] = 'X';
+        TestTTT.GetabAndPlay(1,TestTTT.player);
+        assert (testArray[0][0] == TestTTT.mark[0][0]);
+    }
+    @Test
+    public void test_GetABandplay_array_selections4(){
+        char[][] testArray = new char[3][3];
+        testArray[1][0] = 'X';
+        TestTTT.GetabAndPlay(4,TestTTT.player);
+        assert (testArray[1][0] == TestTTT.mark[1][0]);
+    }
+    @Test
+    public void test_GetABandplay_array_selections9(){
+        char[][] testArray = new char[3][3];
+        testArray[2][2] = 'X';
+        TestTTT.GetabAndPlay(9,TestTTT.player);
+        assert (testArray[2][2] == TestTTT.mark[2][2]);
+    }
+
+
 }
