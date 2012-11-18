@@ -149,18 +149,9 @@ public class TicTacToe {
 
     public static void main(String[] args){
 
-        char playa;
+        char playa = args[0].charAt(0);
         Scanner in = new Scanner(System.in);
 
-
-        //System.out.println("args = " + args[0].charAt(0));
-
-        //if(args[0].charAt(0) == 'X' || args[0].charAt(0) == 'O')
-        //    playa = args[0].charAt(0);
-        //else
-        playa = 'X';
-
-        //System.out.println("player = " + playa);
         TicTacToe TTT = new TicTacToe(playa);
         System.out.println("Velkomin i TicTackToe\n thu spilar "+ TTT.player + "\ncomputer = " + TTT.computer);
         TTT.printBoard();
