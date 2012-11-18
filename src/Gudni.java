@@ -8,4 +8,5 @@
 public class Gudni
 {
     String gaman = "Þetta er nú allt að koma   Bestu kveðjur Guðni";
+    String Meiragaman = " Í dag er 13.11.2012";
 }
