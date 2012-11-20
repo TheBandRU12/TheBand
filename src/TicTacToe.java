@@ -1,26 +1,24 @@
 /**
- * HUGB TheBand haust 2012
- * Date: 11.11.2012
- * dependencies: java.util.scanner
- *
- * Til að þjappa: javac TicTacToe.java
- * Til að keyra: java TicTacToe X ( eða O )
- */
+* HUGB TheBand haust 2012
+* Date: 11.11.2012
+* dependencies: java.util.scanner
+*
+* Til að þjappa: javac TicTacToe.java
+* Til að keyra: java TicTacToe X ( eða O )
+*/
 
 import java.util.Scanner;
 
 public class TicTacToe {
     // frumstilla breytur
-    char[][] mark;
+    //char[][] mark;
+    Board board;
     int count;
     char player;      // human player er alltaf 1 player í version 0.01
     char computer;
 
     TicTacToe(char playa) {
-        mark = new char[3][3];
-            for(int i = 0, k = 49; i < 3; i++)
-                for( int j = 0; j < 3; j++, k++)
-                    mark[i][j] = (char)k;
+        board = new Board();
         count = 0;
         player = playa;
 
@@ -31,10 +29,9 @@ public class TicTacToe {
 
 
     // framkvæma einn leik
-    private void play(int a, int b, char marking){
-
-        if(mark[a][b] != 'O' && mark[a][b] != 'X'){
-            this.mark[a][b] = marking;
+    void play(int a, int b, char marking){
+        if(board.Empty(a,b)){
+            board.PlaceMark(a, b , marking);
         }
 
         count++;
@@ -44,18 +41,19 @@ public class TicTacToe {
     }
 
     void computerplay(){
+        //TODO gera random generator sem skrifar computer Ã­ tÃ³man reit
              //TODO gera random generator sem skrifar computer í tóman reit
         int a = 0, b = 0;
 
         ut:
         for(int i = 0; i < 3; i++)
             ytri:
-            for(int j = 0; j<3; j++)
-                if(mark[i][j] != 'X' && mark[i][j] != 'O'){
-                    play(i,j,computer);
-                    System.out.println("play computer");
-                    break ut;
-                }
+                    for(int j = 0; j<3; j++)
+                        if(board.Empty(i,j)){
+                            play(i,j,computer);
+                            System.out.println("play computer");
+                            break ut;
+                        }
 
         this.printBoard();
 
@@ -70,23 +68,24 @@ public class TicTacToe {
         char victor = '-';
         if(count > 4){
             for(int i = 0; i<3; i++){   // athuga sigur í larettum linum
-                if(this.mark[i][0] == this.mark[i][1]  && this.mark[i][0] == this.mark[i][2])
-                    victor = this.mark[i][2];
+                if(board.GetMark(i,0) == board.GetMark(i,1)  && board.GetMark(i,0) == board.GetMark(i, 2))
+                    victor = board.GetMark(i,2);
             }
 
             for(int i = 0; i<3; i++){   // athuga sigur í lodrettum linum
-                if(this.mark[0][i] == this.mark[1][i]  && this.mark[0][i] == this.mark[2][i])
-                {victor = this.mark[2][i];
-                    System.out.println("victor = " + victor);}
+                if(board.GetMark(0,i) == board.GetMark(1,i)  && board.GetMark(0,i) == board.GetMark(2,i)) {
+                    victor = board.GetMark(2, i);
+                    //System.out.println("victor = " + victor);
+                }
             }
 
             //athuga sigur a ská frá hægra efra horni
-            if(this.mark[0][0] == this.mark[1][1]  && this.mark[1][1] == this.mark[2][2])
-                victor = this.mark[1][1];
+            if(board.GetMark(0,0) == board.GetMark(1,1)  && board.GetMark(1,1) == board.GetMark(2,2))
+                    victor = board.GetMark(1, 1);
 
             //athuga sigur a ská frá vinstra efra horni
-            if(this.mark[0][2] == this.mark[1][1]  && this.mark[1][1] == this.mark[2][0])
-                victor = this.mark[1][1];
+            if(board.GetMark(0,2) == board.GetMark(1,1)  && board.GetMark(1,1) == board.GetMark(2,0))
+                    victor = board.GetMark(1, 1);
 
 
             if(victor == this.player)      // human vinnur
@@ -103,28 +102,29 @@ public class TicTacToe {
         return winner;
     }
 
-    TicTacToe reset(){
-        return new TicTacToe(this.player);
+    void reset(){
+        board = new Board();
+        this.count = 0;
     }
 
-    private void printBoard(){
+    void printBoard(){
         //System.out.println("printboard");
-        String board = "";
+        String boardString = "";
 
         for(int i= 0; i < 3; i++)
             for(int j = 0; j < 3; j++) {
-                board += "[" + mark[i][j] + "]";//sb.append(mark[i][j]);
+                boardString += "[" + board.GetMark(i,j) + "]";//sb.append(mark[i][j]);
                 if(j == 2)
-                    board += "\n";//sb.append("\n");
+                    boardString += "\n";//sb.append("\n");
 
                 //System.out.println("i = " + i + " j = " + j + "board = " + board);
             }
 
-        System.out.println(board);//sb.toString();
+        System.out.println(boardString);//sb.toString();
     }
 
-    //Til ad nota medan forrit er enn i DOS
-    private void GetabAndPlay(int answer, char playa)  {
+    //Velja reit út frá völdu númeri
+    public void GetabAndPlay(int answer, char playa)  {
         if(answer == 1)
             this.play(0,0,playa);
         if(answer == 2)
@@ -149,29 +149,21 @@ public class TicTacToe {
 
     public static void main(String[] args){
 
-        char playa;
+        char playa = args[0].charAt(0);
         Scanner in = new Scanner(System.in);
 
-
-        //System.out.println("args = " + args[0].charAt(0));
-
-            if(args[0].charAt(0) == 'X' || args[0].charAt(0) == 'O')
-                playa = args[0].charAt(0);
-            else playa = 'X';
-
-        //System.out.println("player = " + playa);
         TicTacToe TTT = new TicTacToe(playa);
         System.out.println("Velkomin i TicTackToe\n thu spilar "+ TTT.player + "\ncomputer = " + TTT.computer);
         TTT.printBoard();
         while(TTT.win() < 1) {
-        System.out.println("Sladu inn numer reitar sem thu vilt merkja med " + TTT.player);
-        int answer = in.nextInt();
-            if(answer == 0) TTT = TTT.reset();
+            System.out.println("Sladu inn numer reitar sem thu vilt merkja med " + TTT.player);
+            int answer = in.nextInt();
+            if(answer == 0) TTT.reset();
             if(answer != 0)  {
-            TTT.GetabAndPlay(answer, TTT.player);
+                TTT.GetabAndPlay(answer, TTT.player);
 
-            if(TTT.win() < 1)
-            TTT.computerplay();
+                if(TTT.win() < 1)
+                    TTT.computerplay();
             }
 
 
@@ -187,7 +179,7 @@ public class TicTacToe {
                 // byrja nyan leik eda haetta
                 System.out.println("Sladu inn 1 til ad halda afram\n 2 til ad haetta");
                 answer = in.nextInt();
-                if(answer == 1) {TTT = TTT.reset(); TTT.printBoard();}
+                if(answer == 1) {TTT.reset(); TTT.printBoard();}
                 if(answer != 1) answer = 2;
             }
             //System.out.println("win = " + TTT.win() + " count = " + TTT.count);
