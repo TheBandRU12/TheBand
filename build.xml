@@ -37,7 +37,7 @@
 
     <!-- ======================================================== -->
     <target name="run" depends="jar"
-            description="Runs Hallos">
+            description="TicTacTos">
         <java classname="Hallo">
             <classpath>
                 <pathelement path="${classpath}"/>
