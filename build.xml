@@ -8,6 +8,7 @@
     <property name="dist.dir" value="dist"/>
     <property name="lib.dir" value="lib"/>
     <property name="jar.file" value="TicTacToe.jar"/>
+    <property name="test.dir" value="test"/>
     <property name="classpath"
               value="${lib.dir}/rome-0.8.jar:
                      ${lib.dir}/jdom.jar:
@@ -41,8 +42,8 @@
     </target>
 
     <!-- ======================================================== -->
-    <target name="run" depends="jar"
-            description="TicTacTos">
+    <target name="run" depends="jar,clean,compile,testall,init"
+            description="TicTacToe">
         <java classname="TicTacToe">
             <classpath>
                 <pathelement path="${classpath}"/>
@@ -50,13 +51,29 @@
                 <pathelement location="${dist.dir}\TicTacToe.jar"/>
             </classpath>
         </java>
-    </target>
 
+     <!-- ======================================================== -->
+
+    </target>
+    <target name="testall" depends="compile"
+        description="Test and all test methods">
+
+        <junit dir="${lib.dir}" haltonerror="true" haltonfailure="true">
+             <classpath>
+                <pathelement  location="${lib.dir}"/>
+            </classpath>
+            <test name="BoardTest"/>
+            <test name="TicTacToeTest"/>
+            <formatter type="brief" usefile="false"/>
+        </junit>
+    </target>
 
     <!-- ======================================================== -->
     <target name="clean" description="Delete all generated files">
         <delete dir="${output.dir}"/>
         <delete dir="${dist.dir}"/>
     </target>
+
+
 
 </project>
