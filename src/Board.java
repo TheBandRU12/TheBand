@@ -14,6 +14,12 @@ public class Board {
             board[i] = (char)('1' + i);
         }
     }
+    private FieldChosen fieldChosen = null;
+    void NotifyPlacement(FieldChosen fc){
+        System.out.print("Notify in the house ");
+        fieldChosen = fc;
+        System.out.println(fieldChosen);
+    }
     protected int Two2One(int x, int y) {
        return  3*(x) + (y) +1;
     }
@@ -24,7 +30,14 @@ public class Board {
         return (board[x-1] > '0' && board[x-1] <= '9');
     }
     public boolean PlaceMark(int x, int y, char mark) {
-        return PlaceMark(Two2One(x,y),mark);
+        int field = Two2One(x,y);
+        System.out.println("Would notify");
+        if (null == fieldChosen) {
+            return PlaceMark(field, mark);
+        }
+        System.out.println("Success");
+        fieldChosen.squarePressed(field, mark);
+        return PlaceMark(field, mark);
     }
     public boolean PlaceMark(int x, char mark) {
         if (Empty(x)) {

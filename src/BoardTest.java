@@ -53,6 +53,11 @@ public class BoardTest extends TestCase {
 
     public void testGetMarkTwo() throws Exception {
         Board board = new Board();
+        for (int i=0; i<3; i++) {
+            for (int j=0; j<3; j++) {
+                assertEquals((char)( 3*i+j+(int)'1'), board.GetMark(i,j));
+            }
+        }
         assertEquals('1', board.GetMark(0,0));
         board.board[0] = 'X';
         assertEquals("Top left should be X",'X', board.GetMark(0,0));
