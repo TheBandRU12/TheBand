@@ -47,7 +47,7 @@
         </java>
     </target>
 
-
+   <!-- <taskdef classpath="cobertura.jar" resource="tasks.properties"/> -->
     <!-- ======================================================== -->
     <target name="clean" description="Delete all generated files">
         <delete dir="${output.dir}"/>
