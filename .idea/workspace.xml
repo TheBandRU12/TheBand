@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="73d13e34-6166-4595-af13-814a73d99e5d" name="Default" comment="einhverjar breytar">
-      <change type="DELETED" beforePath="C:\Users\Ella\Documents\GitHub\TicTacToe\.idea\artifacts\Sidannar_ear_exploded.xml" afterPath="" />
+    <list default="true" id="73d13e34-6166-4595-af13-814a73d99e5d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TheBand.iws" />
@@ -622,7 +621,11 @@
       <created>1353539362274</created>
       <updated>1353539362274</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="merge attemps">
+      <created>1353539384549</created>
+      <updated>1353539384549</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -715,7 +718,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="merging from master" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge attemps" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -735,6 +738,7 @@
     <MESSAGE value="Moved most of main into Run function&#10;&#10;Adding GUI requires new main" />
     <MESSAGE value="einhverjar breytar" />
     <MESSAGE value="merging from master" />
+    <MESSAGE value="merge attemps" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
