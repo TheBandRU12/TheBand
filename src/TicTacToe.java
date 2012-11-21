@@ -13,12 +13,19 @@ public class TicTacToe {
     // frumstilla breytur
     //char[][] mark;
     Board board;
+    FieldChosen message;
     int count;
     char player;      // human player er alltaf 1 player í version 0.01
     char computer;
 
+    public void SetBoard(Board b, FieldChosen f) {
+        board = b;
+        message=f;
+    }
+
     TicTacToe(char playa) {
         board = new Board();
+        message = null;
         count = 0;
         player = playa;
 
@@ -75,7 +82,7 @@ public class TicTacToe {
             for(int i = 0; i<3; i++){   // athuga sigur í lodrettum linum
                 if(board.GetMark(0,i) == board.GetMark(1,i)  && board.GetMark(0,i) == board.GetMark(2,i)) {
                     victor = board.GetMark(2, i);
-                    //System.out.println("victor = " + victor);
+                    System.out.println("victor = " + victor);
                 }
             }
 
@@ -145,48 +152,58 @@ public class TicTacToe {
             this.play(2,2,playa);
 
     }
-
-
-    public static void main(String[] args){
-
-        char playa = args[0].charAt(0);
-        Scanner in = new Scanner(System.in);
-
-        TicTacToe TTT = new TicTacToe(playa);
-        System.out.println("Velkomin i TicTackToe\n thu spilar "+ TTT.player + "\ncomputer = " + TTT.computer);
-        TTT.printBoard();
-        while(TTT.win() < 1) {
-            System.out.println("Sladu inn numer reitar sem thu vilt merkja med " + TTT.player);
+    public void Run(Scanner in) {
+        System.out.println("Velkomin i TicTackToe\n thu spilar "+ this.player + "\ncomputer = " + this.computer);
+        this.printBoard();
+        while(this.win() < 1) {
+            System.out.println("Sladu inn numer reits sem thu vilt merkja med " + this.player);
             int answer = in.nextInt();
-            if(answer == 0) TTT.reset();
+            if(answer == 0) this.reset();
             if(answer != 0)  {
-                TTT.GetabAndPlay(answer, TTT.player);
+                this.GetabAndPlay(answer, this.player);
 
-                if(TTT.win() < 1)
-                    TTT.computerplay();
+                if(this.win() < 1)
+                    this.computerplay();
             }
 
 
             // ef leik er lokid med sigri eða jaftnefli
-            if(TTT.win() > 0){
-                if(TTT.win() == 1)
-                    System.out.println("Vid hofum janftefli\n\n");
-                if(TTT.win() == 2)
+            if(this.win() > 0){
+                if(this.win() == 1)
+                    System.out.println("Thetta er janftefli\n\n");
+                if(this.win() == 2)
                     System.out.println("Til hamingju\n\n   Thu vannst :-)\n\n");
-                if(TTT.win() == 3)
-                    System.out.println("HEHEEH \n Eg RUSTADI THER  ;-)\n\n");
+                if(this.win() == 3)
+                    System.out.println("HEHEEH \n Eg RUSTADI THER ;-)\n\n");
 
-                // byrja nyan leik eda haetta
+                // byrja nyjan leik eda haetta
                 System.out.println("Sladu inn 1 til ad halda afram\n 2 til ad haetta");
                 answer = in.nextInt();
-                if(answer == 1) {TTT.reset(); TTT.printBoard();}
+                if(answer == 1) {this.reset(); this.printBoard();}
                 if(answer != 1) answer = 2;
             }
             //System.out.println("win = " + TTT.win() + " count = " + TTT.count);
 
         }
-
-
-
     }
+
+    public static void main(String[] args){
+
+        char playa;
+        Scanner in = new Scanner(System.in);
+
+        //System.out.println("args = " + args[0].charAt(0));
+
+        //if(args[0].charAt(0) == 'X' || args[0].charAt(0) == 'O')
+        //    playa = args[0].charAt(0);
+        //else
+        playa = 'X';
+
+        //System.out.println("player = " + playa);
+        TicTacToe TTT = new TicTacToe(playa);
+
+        TTT.Run(in);
+     }
+
+
 }

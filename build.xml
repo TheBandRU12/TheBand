@@ -1,4 +1,4 @@
-<project name="Hallo" default="jar" basedir=".">
+<project name="TicTacToe" default="jar" basedir=".">
 
     <!-- ======================================================== -->
     <!-- Global properties                                        -->
@@ -7,9 +7,14 @@
     <property name="output.dir" value="classes"/>
     <property name="dist.dir" value="dist"/>
     <property name="lib.dir" value="lib"/>
-    <property name="jar.file" value="Hallo.jar"/>
+    <property name="jar.file" value="TicTacToe.jar"/>
     <property name="classpath"
-              value="${lib.dir}/rome-0.8.jar:${lib.dir}/jdom.jar:${lib.dir}/spring.jar:${lib.dir}/commons-logging.jar:${lib.dir}/ruframework.jar:${lib.dir}/jtds-1.2.jar"/>
+              value="${lib.dir}/rome-0.8.jar:
+                     ${lib.dir}/jdom.jar:
+                     ${lib.dir}/spring.jar:
+                     ${lib.dir}/commons-logging.jar:
+                     ${lib.dir}/jtds-1.2.jar:
+                     ${lib.dir}/junit-4.10.jar"/>
 
     <!-- ======================================================== -->
     <target name="init"
@@ -37,12 +42,12 @@
 
     <!-- ======================================================== -->
     <target name="run" depends="jar"
-            description="Runs Hallos">
-        <java classname="Hallo">
+            description="TicTacTos">
+        <java classname="TicTacToe">
             <classpath>
                 <pathelement path="${classpath}"/>
                 <pathelement path="${java.class.path}"/>
-                <pathelement location="${dist.dir}\Hallo.jar"/>
+                <pathelement location="${dist.dir}\TicTacToe.jar"/>
             </classpath>
         </java>
     </target>
