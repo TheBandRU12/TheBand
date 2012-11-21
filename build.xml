@@ -56,8 +56,7 @@
 
     </target>
     <target name="testall" depends="compile"
-        description="Test and all test methods">
-
+        description="Test and all tests methods">
         <junit dir="${lib.dir}" haltonerror="true" haltonfailure="true">
              <classpath>
                 <pathelement  location="${lib.dir}"/>
@@ -68,9 +67,13 @@
         </junit>
     </target>
 
+
+   <!-- <taskdef classpath="cobertura.jar" resource="tasks.properties"/> -->
+
     <!-- ======================================================== -->
     <target name="clean" description="Delete all generated files">
         <delete dir="${output.dir}"/>
+
         <delete dir="${dist.dir}"/>
     </target>
 
