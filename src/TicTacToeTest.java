@@ -139,9 +139,51 @@ public class TicTacToeTest {
         TestTTT.GetabAndPlay(9,TestTTT.player);
         assert (testArray[2][2] == TestTTT.board.GetMark(2,2));
     }
+    //*
+    public class TestFieldChosen implements FieldChosen {
+        public int square = 20;
+        public char mark = ' ';
+        public String msg = null;
+        @Override
+        public void squarePressed(int s, char x) {
+            this.square = s;
+            this.mark = x;
+        }
+        @Override
+        public void message(String m) {
+            this.msg =m;
+        }
+    }
 
+    @Test
+    public void test_NoSetBoard() {
+        Board b = new Board();
+        TestFieldChosen f = new TestFieldChosen();
 
+        TicTacToe ttt = new TicTacToe('X');
+        ttt.play(1,2,'X');
+        ttt.messageUser("TheMessage");
+        assert f.msg == null;
+        assert 20 == f.square;
+        assert ' ' == f.mark;
+    }
+    @Test
+    public void test_SetBoard() {
+        Board b = new Board();
+        final int square = 20;
+        char mark = ' ';
+        String message = "";
+        TestFieldChosen f = new TestFieldChosen();
 
-
+        TicTacToe ttt = new TicTacToe('X');
+        b.NotifyPlacement(f);
+        ttt.SetBoard(b,f);
+        ttt.play(1,2,'X');
+        ttt.messageUser("TheMessage");
+        assert (f.msg.compareTo( "TheMessage") == 0);
+        assert (6 == f.square);
+        assert ('X' == f.mark);
+    }
+      // */
 
 }
