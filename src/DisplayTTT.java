@@ -21,7 +21,7 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
     private JButton a9Button;
     private JTextField messageField;
 
-    final char[] c = new char[1];
+    final char[] outBuffer = new char[1];
     CountDownLatch available = new CountDownLatch(1);
 
     @Override
@@ -71,9 +71,9 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
             e.printStackTrace();
         }
         available = new CountDownLatch(1);
-        System.out.println("Returning: " + c[0]);
+        System.out.println("Returning: " + outBuffer[0]);
 
-        cb.append(c[0]);
+        cb.append(outBuffer[0]);
         cb.append("\n") ;
         return 1;
     }
@@ -92,8 +92,8 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
                 }
                 board.PlaceMark(button,'X');
 
-                c[0] = (char)('0' + button) ;
-                System.out.println("You Chose: " + c[0]);
+                outBuffer[0] = (char)('0' + button) ;
+                System.out.println("You Chose: " + outBuffer[0]);
                 available.countDown();
                 copy.setLabel("X");
             }
@@ -114,9 +114,22 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
         buttonOK.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //To change body of implemented methods use File | Settings | File Templates.
+                outBuffer[0] = '0' ;
+                System.out.println("You Chose: Reset");
+                available.countDown();
+                a6Button.setLabel("6");
+                a3Button.setLabel("3");
+                a2Button.setLabel("2");
+                a1Button.setLabel("1");
+                a5Button.setLabel("5");
+                a4Button.setLabel("4");
+                a7Button.setLabel("7");
+                a8Button.setLabel("8");
+                a9Button.setLabel("9");
+
             }
         });
+
     }
 
     private Board board;
