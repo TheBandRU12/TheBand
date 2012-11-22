@@ -15,11 +15,11 @@ public class Board {
         }
     }
     private FieldChosen fieldChosen = null;
+    // skra askrifanda
     void NotifyPlacement(FieldChosen fc){
-        System.out.print("Notify in the house ");
         fieldChosen = fc;
-        System.out.println(fieldChosen);
     }
+    // breyta hnitum yfir i takka numer.
     protected int Two2One(int x, int y) {
        return  3*(x) + (y) +1;
     }
@@ -31,21 +31,20 @@ public class Board {
     }
     public boolean PlaceMark(int x, int y, char mark) {
         int field = Two2One(x,y);
-        System.out.println("Would notify");
-        if (null == fieldChosen) {
-            return PlaceMark(field, mark);
-        }
-        System.out.println("Success");
-        fieldChosen.squarePressed(field, mark);
+
         return PlaceMark(field, mark);
     }
     public boolean PlaceMark(int x, char mark) {
-        if (Empty(x)) {
-            board[x-1] = mark;
+        if (!Empty(x)) {
+            return false;
+        }
+        board[x-1] = mark;
+        if (null == fieldChosen) {
             return true;
         }
-        return false;
-
+        // senda skilabod til askrifenda um nytt merki (mark) fra notanda
+        fieldChosen.squarePressed(x, mark);
+        return true;
     }
     public char GetMark(int x) {
         return board[x-1];
