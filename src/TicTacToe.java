@@ -34,7 +34,10 @@ public class TicTacToe {
         else computer = 'X';
     }
     protected void messageUser(String m) {
-        message.message(m);
+        if (message != null)
+        {
+            message.message(m);
+        }
         System.out.println(m);
     }
 
