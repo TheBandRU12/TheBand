@@ -1,11 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="73d13e34-6166-4595-af13-814a73d99e5d" name="Default" comment="komment sett inn">
+    <list default="true" id="73d13e34-6166-4595-af13-814a73d99e5d" name="Default" comment="" />
+    <list id="193ddac9-335e-4c41-b1dd-f689c8b22d3c" name="deleteme" comment="">
       <change type="DELETED" beforePath="C:\Users\Ella\Documents\GitHub\TicTacToe\src\GameDisplay.form" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DisplayTTT.java" afterPath="$PROJECT_DIR$/src/DisplayTTT.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TicTacToe.java" afterPath="$PROJECT_DIR$/src/TicTacToe.java" />
     </list>
     <ignored path="TheBand.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -628,6 +626,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="73d13e34-6166-4595-af13-814a73d99e5d" name="Default" comment="" />
+      <changelist id="193ddac9-335e-4c41-b1dd-f689c8b22d3c" name="deleteme" comment="" />
       <created>1351712414606</created>
       <updated>1351712414606</updated>
     </task>
@@ -683,7 +682,11 @@
       <created>1353544552740</created>
       <updated>1353544552740</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00015" summary="komment sett inn">
+      <created>1353617675548</created>
+      <updated>1353617675548</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
