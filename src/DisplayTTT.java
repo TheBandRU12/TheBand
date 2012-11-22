@@ -137,7 +137,6 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
         board = theBoard;
         board.NotifyPlacement(this);
     }
-
     public static void main(String[] args) {
         DisplayTTT dialog = new DisplayTTT();
         Board board = new Board();

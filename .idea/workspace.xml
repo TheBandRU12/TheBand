@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73d13e34-6166-4595-af13-814a73d99e5d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/DisplayTTTTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TicTacToeTest.java" afterPath="$PROJECT_DIR$/src/TicTacToeTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DisplayTTT.java" afterPath="$PROJECT_DIR$/src/DisplayTTT.java" />
     </list>
     <list id="193ddac9-335e-4c41-b1dd-f689c8b22d3c" name="deleteme" comment="" />
     <ignored path="TheBand.iws" />
@@ -132,10 +131,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DisplayTTT.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DisplayTTT.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DisplayTTT.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="117" selection-start="1793" selection-end="1793" vertical-scroll-proportion="-4.0384617">
+            <state line="139" column="4" selection-start="4515" selection-end="4515" vertical-scroll-proportion="0.6656347">
               <folding>
                 <element signature="e#3744#4362#0" expanded="true" />
                 <element signature="e#4351#4352#0" expanded="true" />
@@ -144,11 +143,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DisplayTTTTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DisplayTTTTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DisplayTTTTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="80" selection-start="92" selection-end="92" vertical-scroll-proportion="0.1461318">
-              <folding />
+            <state line="7" column="67" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -226,10 +227,10 @@
         <option value="$PROJECT_DIR$/src/com/TicTacToe/TicTacToe.java" />
         <option value="$PROJECT_DIR$/src/com/TicTacToe/TicTacToeTest.java" />
         <option value="$PROJECT_DIR$/src/Board.java" />
-        <option value="$PROJECT_DIR$/src/DisplayTTT.java" />
         <option value="$PROJECT_DIR$/src/DisplayTTTTest.java" />
         <option value="$PROJECT_DIR$/src/TicTacToeTest.java" />
         <option value="$PROJECT_DIR$/src/TicTacToe.java" />
+        <option value="$PROJECT_DIR$/src/DisplayTTT.java" />
       </list>
     </option>
   </component>
@@ -370,30 +371,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TicTacToe">
-    <configuration default="false" name="BoardTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="Sidannar" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="BoardTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.DisplayTTT">
     <configuration default="false" name="DisplayTTTTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="Sidannar" />
@@ -478,6 +456,23 @@
     <configuration default="false" name="TicTacToe" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="TicTacToe" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Sidannar" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="DisplayTTT" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="DisplayTTT" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -631,11 +626,11 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Application.HelloWorld" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.BoardTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.DisplayTTTTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TicTacToeTest.test_SetBoard" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TicTacToeTest" />
-      <item index="5" class="java.lang.String" itemvalue="Application.TicTacToe" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.DisplayTTTTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TicTacToeTest.test_SetBoard" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TicTacToeTest" />
+      <item index="4" class="java.lang.String" itemvalue="Application.TicTacToe" />
+      <item index="5" class="java.lang.String" itemvalue="Application.DisplayTTT" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -728,7 +723,11 @@
       <created>1353618160761</created>
       <updated>1353618160761</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="DisplayTTT profad ad hluta; TTT profad betur">
+      <created>1353625136400</created>
+      <updated>1353625136400</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -789,8 +788,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="CHECK_NEW_TODO" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="myTodoPanelSettings">
       <value>
         <are-packages-shown value="false" />
@@ -821,7 +820,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="NULL avoided in TickTackToe" />
+    <option name="LAST_COMMIT_MESSAGE" value="DisplayTTT profad ad hluta; TTT profad betur" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -841,6 +840,7 @@
     <MESSAGE value="bæti við testi." />
     <MESSAGE value="komment sett inn" />
     <MESSAGE value="NULL avoided in TickTackToe" />
+    <MESSAGE value="DisplayTTT profad ad hluta; TTT profad betur" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -966,27 +966,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TicTacToeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="166" column="0" selection-start="4820" selection-end="4820" vertical-scroll-proportion="-4.1153846">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FieldChosen.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="17" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DisplayTTT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="117" selection-start="1793" selection-end="1793" vertical-scroll-proportion="-4.0384617">
-          <folding>
-            <element signature="e#3744#4362#0" expanded="true" />
-            <element signature="e#4351#4352#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -999,8 +982,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DisplayTTTTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="80" selection-start="92" selection-end="92" vertical-scroll-proportion="0.1461318">
+        <state line="7" column="67" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TicTacToeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="166" column="0" selection-start="4820" selection-end="4820" vertical-scroll-proportion="-4.1153846">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DisplayTTT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="139" column="4" selection-start="4515" selection-end="4515" vertical-scroll-proportion="0.6656347">
+          <folding>
+            <element signature="e#3744#4362#0" expanded="true" />
+            <element signature="e#4351#4352#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
