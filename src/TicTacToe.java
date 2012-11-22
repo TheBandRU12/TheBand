@@ -33,12 +33,20 @@ public class TicTacToe {
             computer = 'O';
         else computer = 'X';
     }
+    protected void messageUser(String m) {
+        if (message != null)
+        {
+            message.message(m);
+        }
+        System.out.println(m);
+    }
 
 
     // framkvæma einn leik
     void play(int a, int b, char marking){
         if(board.Empty(a,b)){
             board.PlaceMark(a, b , marking);
+
         }
 
         count++;
@@ -82,7 +90,7 @@ public class TicTacToe {
             for(int i = 0; i<3; i++){   // athuga sigur í lodrettum linum
                 if(board.GetMark(0,i) == board.GetMark(1,i)  && board.GetMark(0,i) == board.GetMark(2,i)) {
                     victor = board.GetMark(2, i);
-                    System.out.println("victor = " + victor);
+                    messageUser("victor = " + victor);
                 }
             }
 
@@ -153,7 +161,7 @@ public class TicTacToe {
 
     }
     public void Run(Scanner in) {
-        System.out.println("Velkomin i TicTackToe\n thu spilar "+ this.player + "\ncomputer = " + this.computer);
+        messageUser("Velkomin i TicTackToe\n thu spilar "+ this.player + "\ncomputer = " + this.computer);
         this.printBoard();
         while(this.win() < 1) {
             System.out.println("Sladu inn numer reits sem thu vilt merkja med " + this.player);
@@ -170,11 +178,11 @@ public class TicTacToe {
             // ef leik er lokid med sigri eða jaftnefli
             if(this.win() > 0){
                 if(this.win() == 1)
-                    System.out.println("Thetta er janftefli\n\n");
+                    messageUser("Thetta er janftefli\n\n");
                 if(this.win() == 2)
-                    System.out.println("Til hamingju\n\n   Thu vannst :-)\n\n");
+                    messageUser("Til hamingju\n\n   Thu vannst :-)\n\n");
                 if(this.win() == 3)
-                    System.out.println("HEHEEH \n Eg RUSTADI THER ;-)\n\n");
+                    messageUser("HEHEEH \n Eg RUSTADI THER ;-)\n\n");
 
                 // byrja nyjan leik eda haetta
                 System.out.println("Sladu inn 1 til ad halda afram\n 2 til ad haetta");
