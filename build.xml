@@ -1,82 +1,168 @@
-<project name="TicTacToe" default="jar" basedir=".">
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="tictactoe" default="all" basedir=".">
 
-    <!-- ======================================================== -->
-    <!-- Global properties                                        -->
-    <!-- ======================================================== -->
-    <property name="src" value="src"/>
-    <property name="output.dir" value="classes"/>
-    <property name="dist.dir" value="dist"/>
+    <property name="src.dir" value="src"/>
+    <property name="target.dir" value="target"/>
+    <property name="classes.dir" value="classes"/>
+    <property name="classes.test.dir" value="testclasses"/>
     <property name="lib.dir" value="lib"/>
-    <property name="jar.file" value="TicTacToe.jar"/>
     <property name="test.dir" value="test"/>
-    <property name="classpath"
-              value="${lib.dir}/rome-0.8.jar:
-                     ${lib.dir}/jdom.jar:
-                     ${lib.dir}/spring.jar:
-                     ${lib.dir}/commons-logging.jar:
-                     ${lib.dir}/jtds-1.2.jar:
-                     ${lib.dir}/junit-4.10.jar"/>
+    <property name="jar.file" value="TicTacToe.jar"/>
+    <property name="doc.dir" value="doc"/>
+    <property name="bin.dir" value="bin"/>
+    <property name="game.name" value="TicTacToe"/>
+    <property name="deploy.dir" value="${user.home}/temp/${game.name}"/>
+    <property name="cobertura.dir" value="cobertura"/>
+    <property name="testcase" value="TestTTT"/>
 
-    <!-- ======================================================== -->
-    <target name="init"
-            description="Prepare by creating output directories">
-        <mkdir dir="${output.dir}"/>
-        <mkdir dir="${dist.dir}"/>
+    <path id="test.classpath.id">
+        <pathelement location="${target.dir}/${classes.dir}"/>
+        <fileset dir="${basedir}/${lib.dir}">
+            <include name="junit*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="clean">
+        <delete dir="${target.dir}" />
     </target>
 
-    <!-- ======================================================== -->
-    <target name="compile" depends="init"
-            description="Compilation of all source files">
-        <javac srcdir="${src}"
-               destdir="${output.dir}"
-               classpath="${classpath}"/>
+    <target name="compile">
+        <mkdir dir="${target.dir}/${classes.dir}"/>
+        <javac debug="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="**/*.java" destdir="${target.dir}/${classes.dir}"/>
     </target>
 
-    <!-- ======================================================== -->
-    <target name="jar" depends="compile"
-            description="Create the JAR">
-        <jar jarfile="${dist.dir}/${jar.file}"
-             basedir="${output.dir}">
-            <fileset dir="${src}"/>
-        </jar>
+    <target name="compile-tests">
+        <mkdir dir="${target.dir}/${classes.test.dir}"/>
+        <javac encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${test.dir}" includes="**/*.java" destdir="${target.dir}/${classes.test.dir}">
+            <classpath refid="test.classpath.id"/>
+        </javac>
     </target>
 
-    <!-- ======================================================== -->
-    <target name="run" depends="jar,clean,compile,testall,init"
-            description="TicTacToe">
-        <java classname="TicTacToe">
+    <target name="unittest" depends="compile-tests">
+        <junit haltonerror="true" haltonfailure="true" printsummary="true">
+            <classpath refid="test.classpath.id"/>
             <classpath>
-                <pathelement path="${classpath}"/>
-                <pathelement path="${java.class.path}"/>
-                <pathelement location="${dist.dir}\TicTacToe.jar"/>
+                <pathelement location="${target.dir}/${classes.test.dir}"/>
             </classpath>
-        </java>
-
-     <!-- ======================================================== -->
-
-    </target>
-    <target name="testall" depends="compile"
-        description="Test and all tests methods">
-        <junit dir="${lib.dir}" haltonerror="true" haltonfailure="true">
-             <classpath>
-                <pathelement  location="${lib.dir}"/>
-            </classpath>
-            <test name="BoardTest"/>
-            <test name="TicTacToeTest"/>
+            <test name="TestTTT"/>
             <formatter type="brief" usefile="false"/>
         </junit>
     </target>
 
-
-   <!-- <taskdef classpath="cobertura.jar" resource="tasks.properties"/> -->
-
-    <!-- ======================================================== -->
-    <target name="clean" description="Delete all generated files">
-        <delete dir="${output.dir}"/>
-
-        <delete dir="${dist.dir}"/>
+     <target name="Test-main" depends="compile">
+             <java fork="true" failonerror="yes" classname="TicTacToe" classpath="${target.dir}/${classes.dir}">
+                     <arg line="1"/>
+             </java>
     </target>
 
 
+    <!-- COBERTURA CODE COVERAGE BEGINS -->
+
+    <path id="cobertura.classpath">
+		<fileset dir="${cobertura.dir}">
+			<include name="cobertura.jar" />
+			<include name="lib/**/*.jar" />
+		</fileset>
+	</path>
+
+    <taskdef classpathref="cobertura.classpath" resource="tasks.properties"/>
+
+    <target name="coverage-init">
+		<mkdir dir="${target.dir}/${classes.dir}" />
+		<mkdir dir="${target.dir}/instrumented" />
+		<mkdir dir="reports/cobertura-xml" />
+		<mkdir dir="reports/cobertura-html" />
+		<mkdir dir="reports/junit-html" />
+	</target>
+
+    <target name="coverage-instrument" depends="compile,compile-tests">
+        <delete file="cobertura.ser" />
+        <cobertura-instrument todir="${target.dir}/instrumented">
+            <fileset dir="${target.dir}/${classes.dir}">
+                <include name="**/*.class"/>
+            </fileset>
+        </cobertura-instrument>
+    </target>
+
+    <target name="coverage-test" depends="coverage-instrument">
+		<junit fork="yes" failureProperty="test.failed" printsummary="true">
+            <sysproperty key="net.sourceforge.cobertura.datafile" file="${basedir}/cobertura.ser" />
+
+            <classpath location="${target.dir}/instrumented" />
+            <classpath location="${target.dir}/${classes.dir}" />
+            <classpath location="${target.dir}/${classes.test.dir}" />
+
+            <classpath refid="cobertura.classpath" />
+            <classpath refid="test.classpath.id"/>
+
+			<formatter type="xml" />
+			<test name="TestTTT" todir="reports/cobertura-xml" if="testcase" />
+			<batchtest todir="reports/cobertura-xml" unless="testcase">
+				<fileset dir="${target.dir}/instrumented">
+					<include name="**/*.class" />
+				</fileset>
+			</batchtest>
+		</junit>
+
+		<junitreport todir="reports/cobertura-xml">
+			<fileset dir="reports/cobertura-xml">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="reports/junit-html" />
+		</junitreport>
+	</target>
+
+	<target name="coverage-report" depends="coverage-instrument">
+		<cobertura-report destdir="reports/cobertura-html" format="html">
+            <fileset dir="${src.dir}">
+                <include name="**/*.java" />
+            </fileset>
+        </cobertura-report>
+	</target>
+
+	<target name="coverage-clean" description="Remove all files created by the build/test process.">
+		<delete dir="${target.dir}" />
+		<delete file="cobertura.log" />
+		<delete file="cobertura.ser" />
+	</target>
+
+    <target name="coverage" depends="coverage-init,coverage-instrument,coverage-test,coverage-report,coverage-clean"/>
+
+    <!-- COBERTURA CODE COVERAGE ENDS -->
+
+	
+	<target name="jar" depends="compile">
+		<jar jarfile="${basedir}/${bin.dir}/${game.name}.jar"
+			 basedir="${basedir}/${target.dir}/${classes.dir}"
+			 compress="true">
+		<manifest> 
+        <attribute name="Main-Class" 
+            value="TicTacToe"/>
+      </manifest>
+		</jar>
+	</target>
+
+    <target name="install" depends="compile,jar">
+        <echo message="Installing ${game.name} to ${deploy.dir}"/>
+        <copy todir="${deploy.dir}" overwrite="true">
+            <fileset dir="${basedir}/${doc.dir}">
+                <include name="**/*"/>
+            </fileset>
+            <fileset dir="${basedir}/${bin.dir}">
+                <include name="*"/>
+            </fileset>
+        </copy>
+        <exec executable="chmod" osfamily="unix">
+            <arg value="+xxx"/>
+            <arg value="${deploy.dir}/${game.name}.sh"/>
+        </exec>
+    </target>
+
+    <target name="execute">
+        <exec osfamily="unix" dir="${deploy.dir}" executable="${deploy.dir}/${game.name}.sh"/>
+        <exec osfamily="windows" dir="${deploy.dir}" executable="${deploy.dir}/${game.name}.bat"/>
+    </target>
+
+    <target name="all" depends="clean ,compile, compile-tests, unittest, Test-main, jar, install, clean, coverage"/>
 
 </project>
