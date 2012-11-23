@@ -6,7 +6,7 @@
     <property name="classes.dir" value="classes"/>
     <property name="classes.test.dir" value="testclasses"/>
     <property name="lib.dir" value="lib"/>
-    <property name="test.dir" value="test"/>
+    <property name="test.dir" value="src"/>
     <property name="jar.file" value="TicTacToe.jar"/>
     <property name="doc.dir" value="doc"/>
     <property name="bin.dir" value="bin"/>
@@ -15,6 +15,8 @@
     <property name="cobertura.dir" value="cobertura"/>
     <property name="testcase" value="TestTTT"/>
 
+
+
     <path id="test.classpath.id">
         <pathelement location="${target.dir}/${classes.dir}"/>
         <fileset dir="${basedir}/${lib.dir}">
@@ -22,18 +24,24 @@
         </fileset>
     </path>
 
+    <path id="class.path">
+        <pathelement location="${target.dir}" />
+        <fileset dir="${lib.dir}" includes="*.jar" />
+        <pathelement location="${lib.dir}/junit-4.10.jar" />
+    </path>
+
     <target name="clean">
         <delete dir="${target.dir}" />
     </target>
 
-    <target name="compile">
+    <target name="compile" >
         <mkdir dir="${target.dir}/${classes.dir}"/>
-        <javac debug="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="**/*.java" destdir="${target.dir}/${classes.dir}"/>
+        <javac classpathref="class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="**/*.java" destdir="${target.dir}/${classes.dir}"/>
     </target>
 
     <target name="compile-tests">
         <mkdir dir="${target.dir}/${classes.test.dir}"/>
-        <javac encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${test.dir}" includes="**/*.java" destdir="${target.dir}/${classes.test.dir}">
+        <javac debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${test.dir}" includes="**/*.java" destdir="${target.dir}/${classes.test.dir}">
             <classpath refid="test.classpath.id"/>
         </javac>
     </target>
