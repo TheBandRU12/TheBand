@@ -49,31 +49,31 @@
         </junit>
     </target>
 
-     <target name="Test-main" depends="compile">
-             <java fork="true" failonerror="yes" classname="TicTacToe" classpath="${target.dir}/${classes.dir}">
-                     <arg line="1"/>
-             </java>
+    <target name="Test-main" depends="compile">
+        <java fork="true" failonerror="yes" classname="TicTacToe" classpath="${target.dir}/${classes.dir}">
+            <arg line="1"/>
+        </java>
     </target>
 
 
     <!-- COBERTURA CODE COVERAGE BEGINS -->
 
     <path id="cobertura.classpath">
-		<fileset dir="${cobertura.dir}">
-			<include name="cobertura.jar" />
-			<include name="lib/**/*.jar" />
-		</fileset>
-	</path>
+        <fileset dir="${cobertura.dir}">
+            <include name="cobertura.jar" />
+            <include name="lib/**/*.jar" />
+        </fileset>
+    </path>
 
     <taskdef classpathref="cobertura.classpath" resource="tasks.properties"/>
 
     <target name="coverage-init">
-		<mkdir dir="${target.dir}/${classes.dir}" />
-		<mkdir dir="${target.dir}/instrumented" />
-		<mkdir dir="reports/cobertura-xml" />
-		<mkdir dir="reports/cobertura-html" />
-		<mkdir dir="reports/junit-html" />
-	</target>
+        <mkdir dir="${target.dir}/${classes.dir}" />
+        <mkdir dir="${target.dir}/instrumented" />
+        <mkdir dir="reports/cobertura-xml" />
+        <mkdir dir="reports/cobertura-html" />
+        <mkdir dir="reports/junit-html" />
+    </target>
 
     <target name="coverage-instrument" depends="compile,compile-tests">
         <delete file="cobertura.ser" />
@@ -85,7 +85,7 @@
     </target>
 
     <target name="coverage-test" depends="coverage-instrument">
-		<junit fork="yes" failureProperty="test.failed" printsummary="true">
+        <junit fork="yes" failureProperty="test.failed" printsummary="true">
             <sysproperty key="net.sourceforge.cobertura.datafile" file="${basedir}/cobertura.ser" />
 
             <classpath location="${target.dir}/instrumented" />
@@ -95,52 +95,52 @@
             <classpath refid="cobertura.classpath" />
             <classpath refid="test.classpath.id"/>
 
-			<formatter type="xml" />
-			<test name="TestTTT" todir="reports/cobertura-xml" if="testcase" />
-			<batchtest todir="reports/cobertura-xml" unless="testcase">
-				<fileset dir="${target.dir}/instrumented">
-					<include name="**/*.class" />
-				</fileset>
-			</batchtest>
-		</junit>
+            <formatter type="xml" />
+            <test name="TestTTT" todir="reports/cobertura-xml" if="testcase" />
+            <batchtest todir="reports/cobertura-xml" unless="testcase">
+                <fileset dir="${target.dir}/instrumented">
+                    <include name="**/*.class" />
+                </fileset>
+            </batchtest>
+        </junit>
 
-		<junitreport todir="reports/cobertura-xml">
-			<fileset dir="reports/cobertura-xml">
-				<include name="TEST-*.xml" />
-			</fileset>
-			<report format="frames" todir="reports/junit-html" />
-		</junitreport>
-	</target>
+        <junitreport todir="reports/cobertura-xml">
+            <fileset dir="reports/cobertura-xml">
+                <include name="TEST-*.xml" />
+            </fileset>
+            <report format="frames" todir="reports/junit-html" />
+        </junitreport>
+    </target>
 
-	<target name="coverage-report" depends="coverage-instrument">
-		<cobertura-report destdir="reports/cobertura-html" format="html">
+    <target name="coverage-report" depends="coverage-instrument">
+        <cobertura-report destdir="reports/cobertura-html" format="html">
             <fileset dir="${src.dir}">
                 <include name="**/*.java" />
             </fileset>
         </cobertura-report>
-	</target>
+    </target>
 
-	<target name="coverage-clean" description="Remove all files created by the build/test process.">
-		<delete dir="${target.dir}" />
-		<delete file="cobertura.log" />
-		<delete file="cobertura.ser" />
-	</target>
+    <target name="coverage-clean" description="Remove all files created by the build/test process.">
+        <delete dir="${target.dir}" />
+        <delete file="cobertura.log" />
+        <delete file="cobertura.ser" />
+    </target>
 
     <target name="coverage" depends="coverage-init,coverage-instrument,coverage-test,coverage-report,coverage-clean"/>
 
     <!-- COBERTURA CODE COVERAGE ENDS -->
 
-	
-	<target name="jar" depends="compile">
-		<jar jarfile="${basedir}/${bin.dir}/${game.name}.jar"
-			 basedir="${basedir}/${target.dir}/${classes.dir}"
-			 compress="true">
-		<manifest> 
-        <attribute name="Main-Class" 
-            value="TicTacToe"/>
-      </manifest>
-		</jar>
-	</target>
+
+    <target name="jar" depends="compile">
+        <jar jarfile="${basedir}/${bin.dir}/${game.name}.jar"
+             basedir="${basedir}/${target.dir}/${classes.dir}"
+             compress="true">
+            <manifest>
+                <attribute name="Main-Class"
+                           value="TicTacToe"/>
+            </manifest>
+        </jar>
+    </target>
 
     <target name="install" depends="compile,jar">
         <echo message="Installing ${game.name} to ${deploy.dir}"/>
