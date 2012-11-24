@@ -69,7 +69,6 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
         try {
             available.await();
         } catch (InterruptedException e) {
-            e.printStackTrace();
         }
         available = new CountDownLatch(1);
         System.out.println("Returning: " + outBuffer[0]);

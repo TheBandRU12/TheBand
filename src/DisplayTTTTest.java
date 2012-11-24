@@ -92,4 +92,11 @@ public class DisplayTTTTest {
         board.buttonOK.doClick();
         org.junit.Assert.assertEquals("2", board.a2Button.getText());
     }
+    @Test
+    public void testMessage() throws  Exception {
+        DisplayTTT display = new DisplayTTT();
+        String message = new String("TheMessageIs");
+        display.message(message);
+        org.junit.Assert.assertEquals(message, display.messageField.getText());
+    }
 }
