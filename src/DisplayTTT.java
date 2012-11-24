@@ -8,27 +8,22 @@ import java.util.concurrent.CountDownLatch;
 
 
 public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
-    protected JPanel contentPane;
-    protected JButton buttonOK;
-    protected JButton a6Button;
-    protected JButton a3Button;
-    protected JButton a2Button;
-    protected JButton a1Button;
-    protected JButton a5Button;
-    protected JButton a4Button;
-    protected JButton a7Button;
-    protected JButton a8Button;
-    protected JButton a9Button;
-    protected JTextField messageField;
+    protected JPanel contentPane ;// = new JPanel();
+    protected JButton buttonOK ;// = new JButton();
+    protected JButton a6Button ;// = new JButton();
+    protected JButton a3Button ;// = new JButton();
+    protected JButton a2Button ;// = new JButton();
+    protected JButton a1Button ;// = new JButton();
+    protected JButton a5Button ;// = new JButton();
+    protected JButton a4Button ;// = new JButton();
+    protected JButton a7Button ;// = new JButton();
+    protected JButton a8Button ;// = new JButton();
+    protected JButton a9Button ;// = new JButton();
+    protected JTextField messageField ;// = new JTextField();
 
     final char[] outBuffer = new char[1];
     CountDownLatch available = new CountDownLatch(1);
 
-    /*
-    protected JButton retrieveButton(int f) {
-
-    }
-    */
     @Override
     public void squarePressed(int f, char x) {
         retrieveButton(f).setText(String.valueOf(x));
@@ -128,12 +123,13 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
                 a8Button.setText("8");
                 a9Button.setText("9");
                 available.countDown();
+                board.reset();
             }
         });
 
     }
 
-    private Board board;
+    protected Board board;
     public void SetBoard(Board theBoard) {
         board = theBoard;
         board.NotifyPlacement(this);

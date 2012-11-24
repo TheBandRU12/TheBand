@@ -118,7 +118,7 @@ public class TicTacToe {
     }
 
     void reset(){
-        board = new Board();
+        board.reset();
         this.count = 0;
     }
 
