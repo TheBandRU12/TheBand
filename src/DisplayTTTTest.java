@@ -55,7 +55,7 @@ public class DisplayTTTTest {
         org.junit.Assert.assertEquals("I", board.a9Button.getText());
     }
     @Test
-    public void testPressingButton() throws Exception {
+    public void testPressingResetButton() throws Exception {
         DisplayTTT display = new DisplayTTT();
         Board b = new Board();
         display.SetBoard(b);

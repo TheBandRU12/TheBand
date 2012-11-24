@@ -93,6 +93,8 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
                 copy.setText("X");
             }
         }
+        if (contentPane == null)
+            contentPane = new JPanel();
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -123,7 +125,8 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
                 a8Button.setText("8");
                 a9Button.setText("9");
                 available.countDown();
-                board.reset();
+                if (board != null)
+                    board.reset();
             }
         });
 
