@@ -13,7 +13,10 @@
     <property name="game.name" value="TicTacToe"/>
     <property name="deploy.dir" value="${user.home}/temp/${game.name}"/>
     <property name="cobertura.dir" value="cobertura"/>
-    <property name="testcase" value="TestTTT"/>
+    <property name="testcase" value="BoardTest"/>
+    <property name="testcase1" value="TicTacToeTest"/>
+    <property name="testcase2" value="DisplayTTTTest"/>
+
 
 
 
@@ -36,12 +39,12 @@
 
     <target name="compile" >
         <mkdir dir="${target.dir}/${classes.dir}"/>
-        <javac classpathref="class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="**/*.java" destdir="${target.dir}/${classes.dir}"/>
+        <javac classpathref="class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="**/*.java" excludes="*Test.java" destdir="${target.dir}/${classes.dir}"/>
     </target>
 
     <target name="compile-tests">
         <mkdir dir="${target.dir}/${classes.test.dir}"/>
-        <javac debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${test.dir}" includes="**/*.java" destdir="${target.dir}/${classes.test.dir}">
+        <javac debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="*Test.java" destdir="${target.dir}/${classes.test.dir}">
             <classpath refid="test.classpath.id"/>
         </javac>
     </target>
@@ -52,16 +55,14 @@
             <classpath>
                 <pathelement location="${target.dir}/${classes.test.dir}"/>
             </classpath>
-            <test name="TestTTT"/>
+            <test name="TicTacToeTest"/>
+            <test name="BoardTest" />
+            <test name="DisplayTTTTest" />
             <formatter type="brief" usefile="false"/>
         </junit>
     </target>
 
-    <target name="Test-main" depends="compile">
-        <java fork="true" failonerror="yes" classname="TicTacToe" classpath="${target.dir}/${classes.dir}">
-            <arg line="1"/>
-        </java>
-    </target>
+
 
 
     <!-- COBERTURA CODE COVERAGE BEGINS -->
@@ -104,8 +105,10 @@
             <classpath refid="test.classpath.id"/>
 
             <formatter type="xml" />
-            <test name="TestTTT" todir="reports/cobertura-xml" if="testcase" />
-            <batchtest todir="reports/cobertura-xml" unless="testcase">
+            <test name="TicTacToeTest" todir="reports/cobertura-xml" if="testcase1" />
+            <test name="BoardTest" todir="reports/cobertura-xml" if="testcase" />
+            <test name="DisplayTTTTest" todir="reports/cobertura-xml" if="testcase2" />
+            <batchtest todir="reports/cobertura-xml" unless="testcase" >
                 <fileset dir="${target.dir}/instrumented">
                     <include name="**/*.class" />
                 </fileset>
@@ -171,6 +174,6 @@
         <exec osfamily="windows" dir="${deploy.dir}" executable="${deploy.dir}/${game.name}.bat"/>
     </target>
 
-    <target name="all" depends="clean ,compile, compile-tests, unittest, Test-main, jar, install, clean, coverage"/>
+    <target name="all" depends="clean ,compile, compile-tests, unittest, jar, install, clean, coverage"/>
 
 </project>
