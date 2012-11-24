@@ -8,53 +8,54 @@ import java.util.concurrent.CountDownLatch;
 
 
 public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
-    private JPanel contentPane;
-    private JButton buttonOK;
-    private JButton a6Button;
-    private JButton a3Button;
-    private JButton a2Button;
-    private JButton a1Button;
-    private JButton a5Button;
-    private JButton a4Button;
-    private JButton a7Button;
-    private JButton a8Button;
-    private JButton a9Button;
-    private JTextField messageField;
+    protected JPanel contentPane;
+    protected JButton buttonOK;
+    protected JButton a6Button;
+    protected JButton a3Button;
+    protected JButton a2Button;
+    protected JButton a1Button;
+    protected JButton a5Button;
+    protected JButton a4Button;
+    protected JButton a7Button;
+    protected JButton a8Button;
+    protected JButton a9Button;
+    protected JTextField messageField;
 
     final char[] outBuffer = new char[1];
     CountDownLatch available = new CountDownLatch(1);
 
+    /*
+    protected JButton retrieveButton(int f) {
+
+    }
+    */
     @Override
     public void squarePressed(int f, char x) {
+        retrieveButton(f).setText(String.valueOf(x));
+    }
+
+    protected JButton retrieveButton(int f) {
         switch (f) {
             case 1:
-                a1Button.setLabel(String.valueOf(x));
-                break;
+                return a1Button;
             case 2:
-                a2Button.setLabel(String.valueOf(x));
-                break;
+                return a2Button;
             case 3:
-                a3Button.setLabel(String.valueOf(x));
-                break;
+                return a3Button;
             case 4:
-                a4Button.setLabel(String.valueOf(x));
-                break;
+                return a4Button;
             case 5:
-                a5Button.setLabel(String.valueOf(x));
-                break;
+                return a5Button;
             case 6:
-                a6Button.setLabel(String.valueOf(x));
-                break;
+                return a6Button;
             case 7:
-                a7Button.setLabel(String.valueOf(x));
-                break;
+                return a7Button;
             case 8:
-                a8Button.setLabel(String.valueOf(x));
-                break;
+                return a8Button;
             case 9:
-                a9Button.setLabel(String.valueOf(x));
-                break;
+                return a9Button;
         }
+        return null;
     }
 
     @Override
@@ -95,12 +96,13 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
                 outBuffer[0] = (char)('0' + button) ;
                 System.out.println("You Chose: " + outBuffer[0]);
                 available.countDown();
-                copy.setLabel("X");
+                copy.setText("X");
             }
         }
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        // TODO: loop this:
         a1Button.addActionListener(new ButtonPressed(1,a1Button));
         a2Button.addActionListener(new ButtonPressed(2,a2Button));
         a3Button.addActionListener(new ButtonPressed(3,a3Button));
@@ -117,23 +119,23 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
                 outBuffer[0] = '0' ;
                 System.out.println("You Chose: Reset");
                 available.countDown();
-                a6Button.setLabel("6");
-                a3Button.setLabel("3");
-                a2Button.setLabel("2");
-                a1Button.setLabel("1");
-                a5Button.setLabel("5");
-                a4Button.setLabel("4");
-                a7Button.setLabel("7");
-                a8Button.setLabel("8");
-                a9Button.setLabel("9");
-
+                a6Button.setText("6");
+                a3Button.setText("3");
+                a2Button.setText("2");
+                a1Button.setText("1");
+                a5Button.setText("5");
+                a4Button.setText("4");
+                a7Button.setText("7");
+                a8Button.setText("8");
+                a9Button.setText("9");
+                available.countDown();
             }
         });
 
     }
 
     private Board board;
-    private void SetBoard(Board theBoard) {
+    public void SetBoard(Board theBoard) {
         board = theBoard;
         board.NotifyPlacement(this);
     }
