@@ -8,18 +8,18 @@ import java.util.concurrent.CountDownLatch;
 
 
 public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
-    private JPanel contentPane;
-    private JButton buttonOK;
-    private JButton a6Button;
-    private JButton a3Button;
-    private JButton a2Button;
-    private JButton a1Button;
-    private JButton a5Button;
-    private JButton a4Button;
-    private JButton a7Button;
-    private JButton a8Button;
-    private JButton a9Button;
-    private JTextField messageField;
+    private JPanel contentPane = new JPanel();
+    private JButton buttonOK = new JButton();
+    private JButton a6Button = new JButton();
+    private JButton a3Button = new JButton();
+    private JButton a2Button = new JButton();
+    private JButton a1Button = new JButton();
+    private JButton a5Button = new JButton();
+    private JButton a4Button = new JButton();
+    private JButton a7Button = new JButton();
+    private JButton a8Button = new JButton();
+    private JButton a9Button = new JButton();
+    private JTextField messageField = new JTextField();
 
     final char[] outBuffer = new char[1];
     CountDownLatch available = new CountDownLatch(1);

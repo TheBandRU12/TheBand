@@ -28,8 +28,7 @@
 
     <target name="compile">
         <mkdir dir="${target.dir}/${classes.dir}"/>
-
-
+        <javac debug="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="**/*.java" destdir="${target.dir}/${classes.dir}"/>
     </target>
 
     <target name="compile-tests">
