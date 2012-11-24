@@ -10,6 +10,9 @@ public class Board {
         char board[];
     public Board() {
         board = new char[9];
+        reset();
+    }
+    protected void reset() {
         for (int i=0; i<9; i++) {
             board[i] = (char)('1' + i);
         }

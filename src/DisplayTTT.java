@@ -8,53 +8,49 @@ import java.util.concurrent.CountDownLatch;
 
 
 public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
-    private JPanel contentPane = new JPanel();
-    private JButton buttonOK = new JButton();
-    private JButton a6Button = new JButton();
-    private JButton a3Button = new JButton();
-    private JButton a2Button = new JButton();
-    private JButton a1Button = new JButton();
-    private JButton a5Button = new JButton();
-    private JButton a4Button = new JButton();
-    private JButton a7Button = new JButton();
-    private JButton a8Button = new JButton();
-    private JButton a9Button = new JButton();
-    private JTextField messageField = new JTextField();
+    protected JPanel contentPane ;// = new JPanel();
+    protected JButton buttonOK ;// = new JButton();
+    protected JButton a6Button ;// = new JButton();
+    protected JButton a3Button ;// = new JButton();
+    protected JButton a2Button ;// = new JButton();
+    protected JButton a1Button ;// = new JButton();
+    protected JButton a5Button ;// = new JButton();
+    protected JButton a4Button ;// = new JButton();
+    protected JButton a7Button ;// = new JButton();
+    protected JButton a8Button ;// = new JButton();
+    protected JButton a9Button ;// = new JButton();
+    protected JTextField messageField ;// = new JTextField();
 
     final char[] outBuffer = new char[1];
     CountDownLatch available = new CountDownLatch(1);
 
     @Override
     public void squarePressed(int f, char x) {
+        retrieveButton(f).setText(String.valueOf(x));
+    }
+
+    protected JButton retrieveButton(int f) {
         switch (f) {
             case 1:
-                a1Button.setLabel(String.valueOf(x));
-                break;
+                return a1Button;
             case 2:
-                a2Button.setLabel(String.valueOf(x));
-                break;
+                return a2Button;
             case 3:
-                a3Button.setLabel(String.valueOf(x));
-                break;
+                return a3Button;
             case 4:
-                a4Button.setLabel(String.valueOf(x));
-                break;
+                return a4Button;
             case 5:
-                a5Button.setLabel(String.valueOf(x));
-                break;
+                return a5Button;
             case 6:
-                a6Button.setLabel(String.valueOf(x));
-                break;
+                return a6Button;
             case 7:
-                a7Button.setLabel(String.valueOf(x));
-                break;
+                return a7Button;
             case 8:
-                a8Button.setLabel(String.valueOf(x));
-                break;
+                return a8Button;
             case 9:
-                a9Button.setLabel(String.valueOf(x));
-                break;
+                return a9Button;
         }
+        return null;
     }
 
     @Override
@@ -68,7 +64,6 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
         try {
             available.await();
         } catch (InterruptedException e) {
-            e.printStackTrace();
         }
         available = new CountDownLatch(1);
         System.out.println("Returning: " + outBuffer[0]);
@@ -95,12 +90,15 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
                 outBuffer[0] = (char)('0' + button) ;
                 System.out.println("You Chose: " + outBuffer[0]);
                 available.countDown();
-                copy.setLabel("X");
+                copy.setText("X");
             }
         }
+        if (contentPane == null)
+            contentPane = new JPanel();
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        // TODO: loop this:
         a1Button.addActionListener(new ButtonPressed(1,a1Button));
         a2Button.addActionListener(new ButtonPressed(2,a2Button));
         a3Button.addActionListener(new ButtonPressed(3,a3Button));
@@ -117,23 +115,25 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
                 outBuffer[0] = '0' ;
                 System.out.println("You Chose: Reset");
                 available.countDown();
-                a6Button.setLabel("6");
-                a3Button.setLabel("3");
-                a2Button.setLabel("2");
-                a1Button.setLabel("1");
-                a5Button.setLabel("5");
-                a4Button.setLabel("4");
-                a7Button.setLabel("7");
-                a8Button.setLabel("8");
-                a9Button.setLabel("9");
-
+                a6Button.setText("6");
+                a3Button.setText("3");
+                a2Button.setText("2");
+                a1Button.setText("1");
+                a5Button.setText("5");
+                a4Button.setText("4");
+                a7Button.setText("7");
+                a8Button.setText("8");
+                a9Button.setText("9");
+                available.countDown();
+                if (board != null)
+                    board.reset();
             }
         });
 
     }
 
-    private Board board;
-    private void SetBoard(Board theBoard) {
+    protected Board board;
+    public void SetBoard(Board theBoard) {
         board = theBoard;
         board.NotifyPlacement(this);
     }

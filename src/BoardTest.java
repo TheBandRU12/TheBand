@@ -49,6 +49,14 @@ public class BoardTest extends TestCase {
         board.board[0] = 'X';
         assertEquals('X', board.GetMark(1));
     }
+    public void testReset() throws Exception {
+        Board board = new Board();
+        for (int i = 0; i <9; i++ )
+            board.board[i] = 'X';
+        board.reset();
+        for (int i = 1; i <10; i++ )
+            assertEquals(((char)'0'+i), board.GetMark(i));
+    }
 
     public void testGetMarkTwo() throws Exception {
         Board board = new Board();
