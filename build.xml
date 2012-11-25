@@ -173,12 +173,6 @@
         <pathelement location="${forms_rt.dir}" />
 
     </path>
-    
-	<target name="register.compilers">
-    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="class.path"/>
-	<taskdef name="IdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="class.path"/>
-	
-	</target>
 
     <target name="clean">
         <delete dir="${target.dir}" />
@@ -281,28 +275,6 @@
   </target>
   
   <target name="compile.module.sidannar.tests" depends="register.custom.compilers,compile.module.sidannar.production" description="compile module Sidannar; test classes" unless="skip.tests"/>
-
-<!--
-
-    <target name="compile" depends="register.compilers">
-        <mkdir dir="${target.dir}/${classes.dir}"/>
-        <unjar src="${lib.dir}/forms_rt.jar" dest="${target.dir}/${classes.dir}">
-            <patternset>
-                <include name="**/*.class"/>
-            </patternset>
-        </unjar>
-        <javac2 classpathref="class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="*.java" excludes="*Test.java" destdir="${target.dir}/${classes.dir}"/>
-    </target>
-
-
-    <target name="compile-tests"  depends="register.compilers">
-        <mkdir dir="${target.dir}/${classes.test.dir}"/>
-        <javac2 debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="*Test.java" destdir="${target.dir}/${classes.test.dir}">
-            <classpath refid="test.classpath.id"/>
-        </javac2>
-    </target>
-	
-	-->
 
     <target name="unittest" depends="compile.module.sidannar.tests">
         <junit haltonerror="true" haltonfailure="true" printsummary="true" >
