@@ -179,6 +179,9 @@
             <fileset dir="${basedir}/${bin.dir}">
                 <include name="*"/>
             </fileset>
+            <fileset dir="${src.dir}">
+                  <include name="RunTTT.bat" />
+            </fileset>
         </copy>
         <exec executable="chmod" osfamily="unix">
             <arg value="+xxx"/>
