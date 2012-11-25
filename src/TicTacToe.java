@@ -116,28 +116,7 @@ public class TicTacToe {
         System.out.println(boardString);//sb.toString();
     }
 
-    //Velja reit út frá völdu númeri
-    public void GetabAndPlay(int answer, char playa)  {
-        if(answer == 1)
-            this.play(0,0,playa);
-        if(answer == 2)
-            this.play(0,1,playa);
-        if(answer == 3)
-            this.play(0,2,playa);
-        if(answer == 4)
-            this.play(1,0,playa);
-        if(answer == 5)
-            this.play(1,1,playa);
-        if(answer == 6)
-            this.play(1,2,playa);
-        if(answer == 7)
-            this.play(2,0,playa);
-        if(answer == 8)
-            this.play(2,1,playa);
-        if(answer == 9)
-            this.play(2,2,playa);
 
-    }
     public void Run(Scanner in) {
         messageUser("Velkomin i TicTackToe\n thu spilar "+ this.player + "\ncomputer = " + this.computer);
         this.printBoard();
@@ -146,7 +125,10 @@ public class TicTacToe {
             int answer = in.nextInt();
             if(answer == 0) this.reset();
             if(answer != 0)  {
-                this.GetabAndPlay(answer, this.player);
+                if (!board.Empty(answer)) {
+                    board.PlaceMark(answer,player);
+                    count ++;
+                }
 
                 if(this.win() < 1)
                     this.computerplay();

@@ -12,11 +12,16 @@ public class TicTacToeTest {
     /**
      * profar hvort play() merkir rettan stad i mark[][]
      */
-   @Test public void play_not_overwrites() {
+    @Test public void play_not_overwrites() {
         TestTTT.reset();
         TestTTT.play(2,2,TestTTT.player);
         TestTTT.play(2,2,'O');
         assert (TestTTT.board.GetMark(2,2) == TestTTT.player);
+    }
+    @Test public void insufficient_plays_draw() {
+        TestTTT.reset();
+        TestTTT.count=3;
+        assert (TestTTT.win() == 0);
     }
    @Test
     public void play_marks_correct_spot() throws Exception {
@@ -59,11 +64,11 @@ public class TicTacToeTest {
     public void test_win_diagonal_from_top_right(){
         TestTTT.reset();
         TestTTT.count = 5;
-        TestTTT.board.PlaceMark(0,2,TestTTT.player);
-        TestTTT.board.PlaceMark(1,1,TestTTT.player);
-        TestTTT.board.PlaceMark(2,0,TestTTT.player);
+        TestTTT.board.PlaceMark(0,2,TestTTT.computer);
+        TestTTT.board.PlaceMark(1,1,TestTTT.computer);
+        TestTTT.board.PlaceMark(2,0,TestTTT.computer);
 
-        assert (TestTTT.win() == 2);
+        assert (TestTTT.win() == 3);
     }
 
     @Test
@@ -117,28 +122,6 @@ public class TicTacToeTest {
         assert (equal);
     }
 
-    @Test
-    public void test_GetABandplay_array_selections1(){
-        TestTTT.reset();
-        char[][] testArray = new char[3][3];
-        testArray[0][0] = 'X';
-        TestTTT.GetabAndPlay(1,TestTTT.player);
-        assert (testArray[0][0] == TestTTT.board.GetMark(0,0));
-    }
-    @Test
-    public void test_GetABandplay_array_selections4(){
-        char[][] testArray = new char[3][3];
-        testArray[1][0] = 'X';
-        TestTTT.GetabAndPlay(4,TestTTT.player);
-        assert (testArray[1][0] == TestTTT.board.GetMark(1,0));
-    }
-    @Test
-    public void test_GetABandplay_array_selections9(){
-        char[][] testArray = new char[3][3];
-        testArray[2][2] = 'X';
-        TestTTT.GetabAndPlay(9,TestTTT.player);
-        assert (testArray[2][2] == TestTTT.board.GetMark(2,2));
-    }
     //*
     public class TestFieldChosen implements FieldChosen {
         public int square = 20;
