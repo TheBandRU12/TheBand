@@ -18,10 +18,16 @@ public class TicTacToeTest {
         TestTTT.play(2,2,'O');
         assert (TestTTT.board.GetMark(2,2) == TestTTT.player);
     }
-    @Test public void insufficient_plays_draw() {
+    @Test
+    public void insufficient_plays_draw() {
         TestTTT.reset();
         TestTTT.count=3;
         assert (TestTTT.win() == 0);
+    }
+    @Test
+    public void test_Y_player(){
+        TicTacToe ttt = new TicTacToe('O');
+        assert (ttt.computer == 'X');
     }
    @Test
     public void play_marks_correct_spot() throws Exception {
