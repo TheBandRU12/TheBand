@@ -16,21 +16,9 @@
     <property name="testcase" value="BoardTest"/>
     <property name="testcase1" value="TicTacToeTest"/>
     <property name="testcase2" value="DisplayTTTTest"/>
-    <property name="javac2" value="lib/forms_rt.jar" />
-
-    <path id="javac2.class.path">
-        <pathelement location="${lib.dir}/forms_rt.jar"/>
-        <pathelement location="${lib.dir}/javac2.jar"/>
-        <pathelement location="${lib.dir}/annotations.jar"/>
-    </path>
-    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.class.path"/>
-
-    <unjar src="${lib.dir}/forms_rt.jar" dest="${target.dir}/${classes.dir}">
-        <patternset>
-            <include name="**/*.class"/>
-        </patternset>
-    </unjar>
-
+    <property name="javac2.dir" value="lib/javac2.jar" />
+    <property name="forms_rt.dir" value="lib/forms_rt.jar" />
+    <property name="annotations.dir" value="lib/annotations.jar" />
 
     <path id="test.classpath.id">
         <pathelement location="${target.dir}/${classes.dir}"/>
@@ -45,6 +33,15 @@
         <pathelement location="${lib.dir}/junit-4.10.jar" />
     </path>
 
+    <path id="javac2.class.path" >
+        <pathelement location="${javac2.dir}" />
+        <pathelement location="${forms_rt.dir}" />
+        <pathelement location="${annotations.dir}" />
+    </path>
+    <fileset dir="${javac2.dir}" includes="**/*.javac2dir"/>
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.class.path"/>
+     C:\Temp\HR\Tolvunarfraedi\20123\HUGB\Verkefni\Late_Term\TheBand\lib\javac2.jar!\com\intellij\ant\Javac2.class
+
     <target name="clean">
         <delete dir="${target.dir}" />
     </target>
@@ -54,9 +51,15 @@
         <javac classpathref="class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="**/*.java" excludes="*Test.java, DisplayTTT.java" destdir="${target.dir}/${classes.dir}"/>
     </target>
 
+    <unjar src="${lib.dir}/forms_rt.jar" dest="${target.dir}/${classes.dir}">
+        <patternset>
+            <include name="**/*.class"/>
+        </patternset>
+    </unjar>
+
     <target name="compile-gui" >
         <mkdir dir="${target.dir}/${classes.dir}"/>
-        <javac2 classpathref="javac2.class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="DisplayTTT.java" excludes="*Test.java, T*.java, B*.java, F*.java" destdir="${target.dir}/${classes.dir}"/>
+        <javac2 classpathref="javac2.class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="DisplayTTT.java" excludes="*Test.java, T*.java, B*.java, F*.java" destdir="${target.dir}/${classes.dir}"></javac2>
     </target>
 
     <target name="compile-tests">
