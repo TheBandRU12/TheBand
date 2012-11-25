@@ -140,6 +140,7 @@
     <property name="testcase" value="BoardTest"/>
     <property name="testcase1" value="TicTacToeTest"/>
     <property name="testcase2" value="FindWinnerTest"/>
+    <property name="testcase3" value="DisplayTTTTest"/>
     <property name="javac2.dir" value="lib" />
     <property name="forms_rt.dir" value="lib/forms_rt.jar" />
     <property name="annotations.dir" value="lib/annotations.jar" />
@@ -197,25 +198,6 @@
   <property name="sidannar.output.dir" value="${module.sidannar.basedir}/out/production/Sidannar"/>
 
   <property name="sidannar.testoutput.dir" value="${module.sidannar.basedir}/out/test/Sidannar"/>
-
-    <property name="src.dir" value="src"/>
-    <property name="target.dir" value="target"/>
-    <property name="classes.dir" value="classes"/>
-    <property name="classes.test.dir" value="testclasses"/>
-    <property name="lib.dir" value="lib"/>
-    <property name="test.dir" value="src"/>
-    <property name="jar.file" value="TicTacToe.jar"/>
-    <property name="doc.dir" value="doc"/>
-    <property name="bin.dir" value="bin"/>
-    <property name="game.name" value="TicTacToe"/>
-    <property name="deploy.dir" value="${user.home}/temp/${game.name}"/>
-    <property name="cobertura.dir" value="cobertura"/>
-    <property name="testcase" value="BoardTest"/>
-    <property name="testcase1" value="TicTacToeTest"/>
-    <property name="testcase2" value="FindWinnerTest"/>
-    <property name="javac2.dir" value="lib/javac2.jar" />
-    <property name="forms_rt.dir" value="lib/forms_rt.jar" />
-    <property name="annotations.dir" value="lib/annotations.jar" />
 
 
   <path id="sidannar.module.bootclasspath">
@@ -323,14 +305,15 @@
 	-->
 
     <target name="unittest" depends="compile.module.sidannar.tests">
-        <junit haltonerror="false" haltonfailure="false" printsummary="true" >
+        <junit haltonerror="true" haltonfailure="true" printsummary="true" >
             <classpath refid="sidannar.module.production.classpath"/>
             <classpath>
-                <pathelement location="${sidannar.testoutput.dir}"/>
+                <pathelement location="${sidannar.output.dir}"/>
             </classpath>
             <test name="TicTacToeTest"/>
             <test name="BoardTest" />
             <test name="FindWinnerTest" />
+            <test name="DisplayTTTTest" />
             <formatter type="brief" usefile="false"/>
         </junit>
     </target>
@@ -364,6 +347,7 @@
                 <include name="TicTacToe.class"/>
                 <include name="DisplayTTT.class" />
                 <include name="Board.class" />
+                <include name="FindWinner.class" />
             </fileset>
         </cobertura-instrument>
     </target>
@@ -382,8 +366,9 @@
             <formatter type="xml" />
             <test name="TicTacToeTest" todir="reports/cobertura-xml" if="testcase1" />
             <test name="BoardTest" todir="reports/cobertura-xml" if="testcase" />
+            <test name="DisplayTTTTest" todir="reports/cobertura-xml" if="testcase3" />
             <test name="FindWinnerTest" todir="reports/cobertura-xml" if="testcase2" />
-            <batchtest todir="reports/cobertura-xml" unless="testcase" >
+            <batchtest todir="reports/cobertura-xml" unless="testcase, testcase1, testcase2, testcase3" >
                 <fileset dir="${target.dir}/instrumented">
                     <include name="**/*.class" />
                 </fileset>
