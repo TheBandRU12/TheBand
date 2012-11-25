@@ -82,34 +82,12 @@ public class TicTacToe {
         int winner = 0;
         char victor = '-';
         if(count > 4){
-            for(int i = 0; i<3; i++){   // athuga sigur í larettum linum
-                if(board.GetMark(i,0) == board.GetMark(i,1)  && board.GetMark(i,0) == board.GetMark(i, 2))
-                    victor = board.GetMark(i,2);
-            }
-
-            for(int i = 0; i<3; i++){   // athuga sigur í lodrettum linum
-                if(board.GetMark(0,i) == board.GetMark(1,i)  && board.GetMark(0,i) == board.GetMark(2,i)) {
-                    victor = board.GetMark(2, i);
-                    messageUser("victor = " + victor);
-                }
-            }
-
-            //athuga sigur a ská frá hægra efra horni
-            if(board.GetMark(0,0) == board.GetMark(1,1)  && board.GetMark(1,1) == board.GetMark(2,2))
-                    victor = board.GetMark(1, 1);
-
-            //athuga sigur a ská frá vinstra efra horni
-            if(board.GetMark(0,2) == board.GetMark(1,1)  && board.GetMark(1,1) == board.GetMark(2,0))
-                    victor = board.GetMark(1, 1);
-
-
-            if(victor == this.player)      // human vinnur
-                winner = 2;
-
-            if(victor == this.computer)     // tölva vinnur
+            FindWinner win = new FindWinner(board);
+            char winMark = win.WinnerIs();
+            if (player == winMark)
+                winner =2;
+            else if (computer == winMark)
                 winner = 3;
-
-
         }
         if(count >= 8)      // jafntefliu
             winner = 1;
