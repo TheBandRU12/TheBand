@@ -16,8 +16,20 @@
     <property name="testcase" value="BoardTest"/>
     <property name="testcase1" value="TicTacToeTest"/>
     <property name="testcase2" value="DisplayTTTTest"/>
+    <property name="javac2" value="lib/forms_rt.jar" />
 
+    <path id="javac2.class.path">
+        <pathelement location="${lib.dir}/forms_rt.jar"/>
+        <pathelement location="${lib.dir}/javac2.jar"/>
+        <pathelement location="${lib.dir}/annotations.jar"/>
+    </path>
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.class.path"/>
 
+    <unjar src="${lib.dir}/forms_rt.jar" dest="${target.dir}/${classes.dir}">
+        <patternset>
+            <include name="**/*.class"/>
+        </patternset>
+    </unjar>
 
 
     <path id="test.classpath.id">
@@ -39,7 +51,12 @@
 
     <target name="compile" >
         <mkdir dir="${target.dir}/${classes.dir}"/>
-        <javac classpathref="class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="**/*.java" excludes="*Test.java" destdir="${target.dir}/${classes.dir}"/>
+        <javac classpathref="class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="**/*.java" excludes="*Test.java, DisplayTTT.java" destdir="${target.dir}/${classes.dir}"/>
+    </target>
+
+    <target name="compile-gui" >
+        <mkdir dir="${target.dir}/${classes.dir}"/>
+        <javac2 classpathref="javac2.class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="DisplayTTT.java" excludes="*Test.java, T*.java, B*.java, F*.java" destdir="${target.dir}/${classes.dir}"/>
     </target>
 
     <target name="compile-tests">
@@ -50,7 +67,7 @@
     </target>
 
     <target name="unittest" depends="compile-tests">
-        <junit haltonerror="true" haltonfailure="true" printsummary="true">
+        <junit haltonerror="true" haltonfailure="true" printsummary="true" >
             <classpath refid="test.classpath.id"/>
             <classpath>
                 <pathelement location="${target.dir}/${classes.test.dir}"/>
@@ -174,6 +191,6 @@
         <exec osfamily="windows" dir="${deploy.dir}" executable="${deploy.dir}/${game.name}.bat"/>
     </target>
 
-    <target name="all" depends="clean ,compile, compile-tests, unittest, jar, install, clean, coverage"/>
+    <target name="all" depends="clean ,compile, compile-gui, unittest, jar, install, clean, coverage"/>
 
 </project>
