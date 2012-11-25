@@ -6,16 +6,8 @@
       <additionalClassPath />
       <antReference projectDefault="true" />
       <customJdkName value="" />
-      <maximumHeapSize value="128" />
-      <maximumStackSize value="2" />
-      <properties />
-    </buildFile>
-    <buildFile url="file://$PROJECT_DIR$/theband.xml">
-      <additionalClassPath />
-      <antReference projectDefault="true" />
-      <customJdkName value="" />
-      <maximumHeapSize value="128" />
-      <maximumStackSize value="2" />
+      <maximumHeapSize value="512" />
+      <maximumStackSize value="24" />
       <properties />
     </buildFile>
   </component>
