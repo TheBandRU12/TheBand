@@ -29,7 +29,7 @@
 
     <path id="class.path">
         <pathelement location="${target.dir}" />
-        <fileset dir="${lib.dir}" includes="*.jar" />
+        <fileset dir="${lib.dir}" includes="junit.jar" />
         <pathelement location="${lib.dir}/junit-4.10.jar" />
     </path>
 
@@ -37,10 +37,15 @@
         <pathelement location="${javac2.dir}" />
         <pathelement location="${forms_rt.dir}" />
         <pathelement location="${annotations.dir}" />
+        <pathelement location="${lib.dir}/javac2.jar" />
+        <pathelement location="${lib.dir}/jdom.jar" />
+        <pathelement location="${lib.dir}/asm-commons.jar" />
+        <pathelement location="${lib.dir}/asm.jar" />
+        <pathelement location="${lib.dir}/jgoodies-common-1.2.1.jar" />
+
     </path>
-    <fileset dir="${javac2.dir}" includes="**/*.javac2dir"/>
+    <fileset dir="${javac2.dir}" includes="**/*, *"/>
     <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.class.path"/>
-     C:\Temp\HR\Tolvunarfraedi\20123\HUGB\Verkefni\Late_Term\TheBand\lib\javac2.jar!\com\intellij\ant\Javac2.class
 
     <target name="clean">
         <delete dir="${target.dir}" />
@@ -50,12 +55,6 @@
         <mkdir dir="${target.dir}/${classes.dir}"/>
         <javac classpathref="class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="**/*.java" excludes="*Test.java, DisplayTTT.java" destdir="${target.dir}/${classes.dir}"/>
     </target>
-
-    <unjar src="${lib.dir}/forms_rt.jar" dest="${target.dir}/${classes.dir}">
-        <patternset>
-            <include name="**/*.class"/>
-        </patternset>
-    </unjar>
 
     <target name="compile-gui" >
         <mkdir dir="${target.dir}/${classes.dir}"/>
