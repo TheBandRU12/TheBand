@@ -139,7 +139,7 @@
     <property name="cobertura.dir" value="cobertura"/>
     <property name="testcase" value="BoardTest"/>
     <property name="testcase1" value="TicTacToeTest"/>
-    <property name="testcase2" value="DisplayTTTTest"/>
+    <!-- property name="testcase2" value="FindWinnerTest"/ -->
     <property name="javac2.dir" value="lib" />
     <property name="forms_rt.dir" value="lib/forms_rt.jar" />
     <property name="annotations.dir" value="lib/annotations.jar" />
@@ -212,7 +212,7 @@
     <property name="cobertura.dir" value="cobertura"/>
     <property name="testcase" value="BoardTest"/>
     <property name="testcase1" value="TicTacToeTest"/>
-    <property name="testcase2" value="DisplayTTTTest"/>
+    <!--property name="testcase2" value="FindWinnerTest"/-->
     <property name="javac2.dir" value="lib/javac2.jar" />
     <property name="forms_rt.dir" value="lib/forms_rt.jar" />
     <property name="annotations.dir" value="lib/annotations.jar" />
@@ -330,7 +330,7 @@
             </classpath>
             <test name="TicTacToeTest"/>
             <test name="BoardTest" />
-            <test name="DisplayTTTTest" />
+            <!--test name="FindWinnerTest" /-->
             <formatter type="brief" usefile="false"/>
         </junit>
     </target>
@@ -382,7 +382,7 @@
             <formatter type="xml" />
             <test name="TicTacToeTest" todir="reports/cobertura-xml" if="testcase1" />
             <test name="BoardTest" todir="reports/cobertura-xml" if="testcase" />
-            <test name="DisplayTTTTest" todir="reports/cobertura-xml" if="testcase2" />
+            <!--test name="FindWinnerTest" todir="reports/cobertura-xml" if="testcase2" /-->
             <batchtest todir="reports/cobertura-xml" unless="testcase" >
                 <fileset dir="${target.dir}/instrumented">
                     <include name="**/*.class" />
