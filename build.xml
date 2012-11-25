@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="tictactoe" default="all" basedir=".">
 
+<!-- breytur skilgreindar -->
+
     <property name="src.dir" value="src"/>
     <property name="target.dir" value="target"/>
     <property name="classes.dir" value="classes"/>
@@ -19,45 +21,40 @@
     <property name="javac2.dir" value="lib/javac2.jar" />
     <property name="forms_rt.dir" value="lib/forms_rt.jar" />
     <property name="annotations.dir" value="lib/annotations.jar" />
+    <property name="manifest" value="lib/manifest" />
+	
 
     <path id="test.classpath.id">
         <pathelement location="${target.dir}/${classes.dir}"/>
         <fileset dir="${basedir}/${lib.dir}">
-            <include name="junit*.jar"/>
+            <include name="*.jar"/>
         </fileset>
     </path>
 
 
     <path id="class.path" >
-        <pathelement location="${target.dir}" />
-        <fileset dir="${lib.dir}" includes="junit.jar" />
-        <pathelement location="${lib.dir}/junit-4.10.jar" />
-        <pathelement location="${javac2.dir}" />
-        <pathelement location="${forms_rt.dir}" />
-        <pathelement location="${annotations.dir}" />
-        <pathelement location="${lib.dir}/javac2.jar" />
-        <pathelement location="${lib.dir}/jdom.jar" />
-        <pathelement location="${lib.dir}/asm-commons.jar" />
-        <pathelement location="${lib.dir}/asm.jar" />
-        <pathelement location="${lib.dir}/jgoodies-common-1.2.1.jar" />
-
+        <pathelement location="${target.dir}/${classes.dir}" />
+        <fileset dir="${basedir}/${lib.dir}" includes="*.jar" />
     </path>
-    <fileset dir="${javac2.dir}" includes="**/*, *"/>
+    
     <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="class.path"/>
 
     <target name="clean">
         <delete dir="${target.dir}" />
     </target>
 
+
+
     <target name="compile" >
         <mkdir dir="${target.dir}/${classes.dir}"/>
-        <javac2 classpathref="class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="**/*.java" excludes="*Test.java, DisplayTTT.java" destdir="${target.dir}/${classes.dir}"/>
+        <unjar src="${lib.dir}/forms_rt.jar" dest="${target.dir}/${classes.dir}">
+            <patternset>
+                <include name="**/*.class"/>
+            </patternset>
+        </unjar>
+        <javac2 classpathref="class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="*.java" excludes="*Test.java" destdir="${target.dir}/${classes.dir}"/>
     </target>
 
-    <target name="compile-gui" >
-        <mkdir dir="${target.dir}/${classes.dir}"/>
-        <javac2 classpathref="class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${src.dir}" includes="DisplayTTT.java" excludes="*Test.java, T*.java, B*.java, F*.java" destdir="${target.dir}/${classes.dir}"></javac2>
-    </target>
 
     <target name="compile-tests">
         <mkdir dir="${target.dir}/${classes.test.dir}"/>
@@ -167,10 +164,12 @@
                 <attribute name="Main-Class"
                            value="TicTacToe"/>
             </manifest>
+
         </jar>
     </target>
 
     <target name="install" depends="compile,jar">
+        <mkdir dir="${deploy.dir}" />
         <echo message="Installing ${game.name} to ${deploy.dir}"/>
         <copy todir="${deploy.dir}" overwrite="true">
             <fileset dir="${basedir}/${doc.dir}">
@@ -191,9 +190,9 @@
 
     <target name="execute">
         <exec osfamily="unix" dir="${deploy.dir}" executable="${deploy.dir}/${game.name}.sh"/>
-        <exec osfamily="windows" dir="${deploy.dir}" executable="${deploy.dir}/${game.name}.bat"/>
+        <exec osfamily="windows" dir="${deploy.dir}" executable="${deploy.dir}/RunTTT.bat"/>
     </target>
 
-    <target name="all" depends="clean ,compile, compile-gui, unittest, jar, install, clean, coverage"/>
+    <target name="all" depends="clean ,compile, unittest, jar, install, clean, coverage"/>
 
 </project>
