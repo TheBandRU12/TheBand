@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="theband" default="all">
+  
+  
+  <property file="theband.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.ear"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.swc"/>
+    <include name="*.ane"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <include name="**/?*.properties"/>
+    <include name="**/?*.xml"/>
+    <include name="**/?*.gif"/>
+    <include name="**/?*.png"/>
+    <include name="**/?*.jpeg"/>
+    <include name="**/?*.jpg"/>
+    <include name="**/?*.html"/>
+    <include name="**/?*.dtd"/>
+    <include name="**/?*.tld"/>
+    <include name="**/?*.ftl"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.6" value="${jdk.home.1.6}/bin"/>
+  <path id="jdk.classpath.1.6">
+    <fileset dir="${jdk.home.1.6}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="../../../Users/Lenovo/algs4/stdlib.jar"/>
+      <include name="../../../Users/Lenovo/algs4/algs4.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.6}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.6}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.6"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.clover-idea-3.1.8.classpath">
+    <pathelement location="${idea.home}/lib/clover-idea-3.1.8.jar"/>
+  </path>
+  
+  <path id="library.junit-4.10.classpath">
+    <pathelement location="${idea.home}/lib/junit-4.10.jar"/>
+  </path>
+  
+  <path id="library.junit.classpath">
+    <pathelement location="${idea.home}/lib/junit.jar"/>
+  </path>
+  
+  <path id="library.lib.classpath">
+    <fileset dir="${basedir}/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  
+  <path id="library.clover_idea_plugin.classpath">
+    <pathelement location="${idea.home}/lib/clover-idea-3.1.8.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${basedir}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm.jar"/>
+    <pathelement location="${javac2.home}/asm-commons.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module Sidannar -->
+  
+  <dirname property="module.sidannar.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.sidannar" value="${jdk.home.1.6}"/>
+  <property name="module.jdk.bin.sidannar" value="${jdk.bin.1.6}"/>
+  <property name="module.jdk.classpath.sidannar" value="jdk.classpath.1.6"/>
+  
+  <property name="compiler.args.sidannar" value="${compiler.args}"/>
+  <property name="game.name" value="TicTacToe" />
+  <property name="sidannar.output.dir" value="${module.sidannar.basedir}/out/production/Sidannar"/>
+
+  <property name="sidannar.testoutput.dir" value="${module.sidannar.basedir}/out/test/Sidannar"/>
+  
+  <path id="sidannar.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="sidannar.module.production.classpath">
+    <path refid="library.clover_idea_plugin.classpath"/>
+    <path refid="${module.jdk.classpath.sidannar}"/>
+    <path refid="library.lib.classpath"/>
+    <path refid="library.junit-4.10.classpath"/>
+    <path refid="library.clover-idea-3.1.8.classpath"/>
+    <path refid="library.junit.classpath"/>
+  </path>
+  
+  <path id="sidannar.runtime.production.module.classpath">
+    <path refid="library.clover_idea_plugin.classpath"/>
+    <pathelement location="${sidannar.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+    <path refid="library.junit-4.10.classpath"/>
+    <path refid="library.clover-idea-3.1.8.classpath"/>
+    <path refid="library.junit.classpath"/>
+  </path>
+  
+  <path id="sidannar.module.classpath">
+    <path refid="library.clover_idea_plugin.classpath"/>
+    <path refid="${module.jdk.classpath.sidannar}"/>
+    <pathelement location="${sidannar.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+    <pathelement location="${idea.home}/plugins/testng/lib/testng-jdk15.jar"/>
+    <path refid="library.junit-4.10.classpath"/>
+    <path refid="library.clover-idea-3.1.8.classpath"/>
+    <path refid="library.junit.classpath"/>
+  </path>
+  
+  <path id="sidannar.runtime.module.classpath">
+    <path refid="library.clover_idea_plugin.classpath"/>
+    <pathelement location="${sidannar.testoutput.dir}"/>
+    <pathelement location="${sidannar.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+    <pathelement location="${idea.home}/plugins/testng/lib/testng-jdk15.jar"/>
+    <path refid="library.junit-4.10.classpath"/>
+    <path refid="library.clover-idea-3.1.8.classpath"/>
+    <path refid="library.junit.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.sidannar">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.sidannar">
+    <patternset refid="excluded.from.module.sidannar"/>
+  </patternset>
+  
+  <path id="sidannar.module.sourcepath">
+    <dirset dir="${module.sidannar.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.sidannar" depends="compile.module.sidannar.production,compile.module.sidannar.tests" description="Compile module Sidannar"/>
+  
+  <target name="compile.module.sidannar.production" depends="register.custom.compilers" description="Compile module Sidannar; production classes">
+    <mkdir dir="${sidannar.output.dir}"/>
+    <javac2 destdir="${sidannar.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.sidannar}/javac">
+      <compilerarg line="${compiler.args.sidannar}"/>
+      <bootclasspath refid="sidannar.module.bootclasspath"/>
+      <classpath refid="sidannar.module.production.classpath"/>
+      <src refid="sidannar.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.sidannar"/>
+    </javac2>
+    
+    <copy todir="${sidannar.output.dir}">
+      <fileset dir="${module.sidannar.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.sidannar.tests" depends="register.custom.compilers,compile.module.sidannar.production" description="compile module Sidannar; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.sidannar" description="cleanup module">
+    <delete dir="${sidannar.output.dir}"/>
+    <delete dir="${sidannar.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.sidannar" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.sidannar" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>
