@@ -5,11 +5,8 @@
       <root url="file://$PROJECT_DIR$/lib" />
       <root url="file://$PROJECT_DIR$/lib" />
     </CLASSES>
-    <JAVADOC>
-      <root url="file://$PROJECT_DIR$/lib/junit4.10/junit4.10/javadoc" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES>
-      <root url="file://$PROJECT_DIR$/lib/junit4.10/junit4.10" />
       <root url="file://$PROJECT_DIR$/lib" />
       <root url="file://$PROJECT_DIR$/lib" />
     </SOURCES>
