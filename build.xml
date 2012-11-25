@@ -27,13 +27,11 @@
         </fileset>
     </path>
 
-    <path id="class.path">
+
+    <path id="class.path" >
         <pathelement location="${target.dir}" />
         <fileset dir="${lib.dir}" includes="junit.jar" />
         <pathelement location="${lib.dir}/junit-4.10.jar" />
-    </path>
-
-    <path id="javac2.class.path" >
         <pathelement location="${javac2.dir}" />
         <pathelement location="${forms_rt.dir}" />
         <pathelement location="${annotations.dir}" />
@@ -45,7 +43,7 @@
 
     </path>
     <fileset dir="${javac2.dir}" includes="**/*, *"/>
-    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.class.path"/>
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="class.path"/>
 
     <target name="clean">
         <delete dir="${target.dir}" />
@@ -53,23 +51,23 @@
 
     <target name="compile" >
         <mkdir dir="${target.dir}/${classes.dir}"/>
-        <javac classpathref="class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="**/*.java" excludes="*Test.java, DisplayTTT.java" destdir="${target.dir}/${classes.dir}"/>
+        <javac2 classpathref="class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="**/*.java" excludes="*Test.java, DisplayTTT.java" destdir="${target.dir}/${classes.dir}"/>
     </target>
 
     <target name="compile-gui" >
         <mkdir dir="${target.dir}/${classes.dir}"/>
-        <javac2 classpathref="javac2.class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="DisplayTTT.java" excludes="*Test.java, T*.java, B*.java, F*.java" destdir="${target.dir}/${classes.dir}"></javac2>
+        <javac2 classpathref="class.path" debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${src.dir}" includes="DisplayTTT.java" excludes="*Test.java, T*.java, B*.java, F*.java" destdir="${target.dir}/${classes.dir}"></javac2>
     </target>
 
     <target name="compile-tests">
         <mkdir dir="${target.dir}/${classes.test.dir}"/>
-        <javac debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="*Test.java" destdir="${target.dir}/${classes.test.dir}">
+        <javac2 debug="true" verbose="true" encoding="iso-8859-1" includeantruntime="false" srcdir="${basedir}/${src.dir}" includes="*Test.java" destdir="${target.dir}/${classes.test.dir}">
             <classpath refid="test.classpath.id"/>
-        </javac>
+        </javac2>
     </target>
 
     <target name="unittest" depends="compile-tests">
-        <junit haltonerror="true" haltonfailure="true" printsummary="true" >
+        <junit haltonerror="false" haltonfailure="false" printsummary="true" >
             <classpath refid="test.classpath.id"/>
             <classpath>
                 <pathelement location="${target.dir}/${classes.test.dir}"/>
