@@ -56,7 +56,6 @@ public class TicTacToe {
     }
 
     void computerplay(){
-        //TODO gera random generator sem skrifar computer Ã­ tÃ³man reit
              //TODO gera random generator sem skrifar computer í tóman reit
         int a = 0, b = 0;
 
@@ -89,7 +88,7 @@ public class TicTacToe {
             else if (computer == winMark)
                 winner = 3;
         }
-        if(count >= 8)      // jafntefliu
+        if(count > 8)      // jafntefli
             winner = 1;
 
         return winner;
