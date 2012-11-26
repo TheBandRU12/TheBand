@@ -49,7 +49,7 @@ public class FindWinner {
     }
     protected char tlDiagWin() {
         char f=board.GetMark(1);
-        for (int i =1; i < 3; i++) {
+        for (int i = 1; i < 3; i++) {
             if (f != board.GetMark(i,i)) {
                 return ' ';
             }

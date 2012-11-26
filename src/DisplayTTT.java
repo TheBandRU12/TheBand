@@ -112,9 +112,8 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
         buttonOK.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                outBuffer[0] = '0' ;
                 System.out.println("You Chose: Reset");
-                available.countDown();
+
                 a6Button.setText("6");
                 a3Button.setText("3");
                 a2Button.setText("2");
@@ -124,9 +123,14 @@ public class DisplayTTT extends JDialog implements FieldChosen, Readable  {
                 a7Button.setText("7");
                 a8Button.setText("8");
                 a9Button.setText("9");
-                available.countDown();
+
                 if (board != null)
                     board.reset();
+
+                outBuffer[0] = '0' ;
+                available.countDown();
+
+
             }
         });
 

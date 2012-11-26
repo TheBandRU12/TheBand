@@ -59,9 +59,9 @@ public class FindWinnerTest extends TestCase {
     public void testTLDiagWins() throws Exception {
         board.reset();
         FindWinner xWins = new FindWinner(board);
-        for (int i=0; i < 3; i++) {
-            board.PlaceMark(i,i,'X');
-        }
+        board.PlaceMark(1,'X');
+        board.PlaceMark(5,'X');
+        board.PlaceMark(9,'X');
         org.junit.Assert.assertEquals('X', xWins.tlDiagWin());
         org.junit.Assert.assertEquals('X', xWins.WinnerIs());
     }

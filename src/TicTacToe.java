@@ -144,9 +144,9 @@ public class TicTacToe {
                     messageUser("HEHEEH \n Eg RUSTADI THER ;-)\n\n");
 
                 // byrja nyjan leik eda haetta
-                System.out.println("Sladu inn 1 til ad halda afram\n 2 til ad haetta");
+                System.out.println("Sladu inn 0 til ad halda afram\n 2 til ad haetta");
                 answer = in.nextInt();
-                if(answer == 1) {this.reset(); this.printBoard();}
+                if(answer == 0) {this.reset(); this.printBoard();}
                 if(answer != 1) answer = 2;
             }
             //System.out.println("win = " + TTT.win() + " count = " + TTT.count);
