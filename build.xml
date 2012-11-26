@@ -406,6 +406,9 @@
             <fileset dir="${src.dir}">
                   <include name="RunTTT.bat" />
             </fileset>
+            <fileset dir="${basedir}">
+                <include name="Readme.txt" />
+            </fileset>
         </copy>
         <exec executable="chmod" osfamily="unix">
             <arg value="+xxx"/>
