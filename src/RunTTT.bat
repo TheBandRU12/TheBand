@@ -1,2 +1,2 @@
-java -jar TicTacToe.jar com.TicTacToe.DisplayTTT;
+java -jar TicTacToe.jar  com.TicTacToe.DisplayTTT;
 pause;
