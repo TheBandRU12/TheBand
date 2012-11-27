@@ -258,12 +258,18 @@
       <include name="src"/>
     </dirset>
   </path>
-  
-  
+
   <target name="compile.module.sidannar" depends="compile.module.sidannar.production,compile.module.sidannar.tests" description="Compile module Sidannar"/>
   
   <target name="compile.module.sidannar.production" depends="register.custom.compilers" description="Compile module Sidannar; production classes">
-    <mkdir dir="${sidannar.output.dir}"/>
+    <mkdir dir="${sidannar.output.dir}" />
+    <mkdir dir="${sidannar.testoutput.dir}" />
+         <unjar src="${lib.dir}/forms_rt.jar" dest="${sidannar.output.dir}">
+              <patternset>
+                  <include name="**/*.class"/>
+              </patternset>
+          </unjar>
+
     <javac2 destdir="${sidannar.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.sidannar}/javac">
       <compilerarg line="${compiler.args.sidannar}"/>
       <bootclasspath refid="sidannar.module.bootclasspath"/>
@@ -271,6 +277,8 @@
       <src refid="sidannar.module.sourcepath"/>
       <patternset refid="excluded.from.compilation.sidannar"/>
     </javac2>
+
+
     
     <copy todir="${sidannar.output.dir}">
       <fileset dir="${module.sidannar.basedir}/src">
